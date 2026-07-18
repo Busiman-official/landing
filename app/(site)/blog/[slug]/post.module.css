@@ -1,0 +1,78 @@
+.section {
+  background: var(--ground);
+  padding: 72px 0 96px;
+}
+
+.inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.back {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+
+.back:hover {
+  color: var(--navy);
+}
+
+.date {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin: 10px 0 0;
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.9px;
+}
+
+.prose {
+  margin-top: 40px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.prose :global(p) {
+  margin: 0 0 20px;
+}
+
+.prose :global(h2) {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: var(--navy);
+  margin: 40px 0 16px;
+}
+
+.prose :global(a) {
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: var(--amber-line);
+  text-underline-offset: 3px;
+}
+
+.prose :global(ul),
+.prose :global(ol) {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+
+.prose :global(li) {
+  margin-bottom: 8px;
+}
+
+.prose :global(strong) {
+  color: var(--navy);
+}

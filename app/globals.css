@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
+/*
+  Busiman brand tokens, pulled from the logo (navy + amber).
+  Design commits to a light, ledger/register-paper motif — no dark theme.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #123b6d;
+  --navy-deep: #0c2c54;
+  --amber: #ffab00;
+  --amber-soft: #fff4dc;
+  --amber-line: #ffd980;
+  --ink: #44546e;
+  --ink-soft: #7285a0;
+  --ground: #fbfaf7;
+  --tint: #f2f5fa;
+  --card: #ffffff;
+  --line: #e3e9f2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-amber-line: var(--amber-line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ground: var(--ground);
+  --color-tint: var(--tint);
+  --color-card: var(--card);
+  --color-line: var(--line);
+
+  --font-display: var(--font-baloo);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--navy);
+  text-wrap: balance;
+  line-height: 1.15;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
