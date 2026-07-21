@@ -104,6 +104,14 @@
   margin-top: 20px;
 }
 
+.version {
+  margin: 12px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
 .optionBtn {
   flex: 1;
   padding: 10px 14px;

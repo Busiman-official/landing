@@ -59,17 +59,19 @@ export type DownloadPlatform = {
   group: "Desktop" | "Mobile";
   tagline: string;
   description: string;
-  options: { label: string; icon: PlatformIconName; href: string }[];
+  options: { label: string; icon: PlatformIconName }[];
 };
 
+// Actual download URLs are resolved at request time in Download.tsx via
+// lib/releases.ts, so they always point at the latest published build.
 export const downloadPlatforms: DownloadPlatform[] = [
   {
     group: "Desktop",
     tagline: "Windows & macOS",
     description: "The full app for the office computer at the front desk.",
     options: [
-      { label: "Windows", icon: "windows", href: "#" },
-      { label: "macOS", icon: "apple", href: "#" },
+      { label: "Windows", icon: "windows" },
+      { label: "macOS", icon: "apple" },
     ],
   },
   {
@@ -77,8 +79,8 @@ export const downloadPlatforms: DownloadPlatform[] = [
     tagline: "Android & iOS",
     description: "Attendance, calls and service reports from the field.",
     options: [
-      { label: "Android", icon: "android", href: "#" },
-      { label: "iOS", icon: "apple", href: "#" },
+      { label: "Android", icon: "android" },
+      { label: "iOS", icon: "apple" },
     ],
   },
 ];

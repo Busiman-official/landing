@@ -1,6 +1,7 @@
 import { DesktopIcon, MobileIcon, platformIcons } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Button";
 import { downloadPlatforms } from "@/lib/content";
+import { getLatestDesktopRelease, getLatestMobileRelease } from "@/lib/releases";
 import styles from "./Download.module.css";
 
 const groupIcons = {
@@ -8,7 +9,24 @@ const groupIcons = {
   Mobile: MobileIcon,
 } as const;
 
-export function Download() {
+const DESKTOP_RELEASES_PAGE =
+  "https://github.com/Busiman-official/busiman-desktop/releases/latest";
+
+export async function Download() {
+  const [desktop, mobile] = await Promise.all([
+    getLatestDesktopRelease(),
+    getLatestMobileRelease(),
+  ]);
+
+  const hrefFor = (group: string, label: string): string => {
+    if (group === "Desktop" && label === "Windows")
+      return desktop.windows ?? DESKTOP_RELEASES_PAGE;
+    if (group === "Desktop" && label === "macOS")
+      return desktop.mac ?? DESKTOP_RELEASES_PAGE;
+    if (group === "Mobile" && label === "Android") return mobile.android;
+    return "#";
+  };
+
   return (
     <section className={styles.section} id="download">
       <div className={styles.inner}>
@@ -43,7 +61,9 @@ export function Download() {
                       return (
                         <Button
                           key={option.label}
-                          href={option.href}
+                          href={hrefFor(platform.group, option.label)}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           variant="ghost"
                           className={styles.optionBtn}
                         >
@@ -53,6 +73,12 @@ export function Download() {
                       );
                     })}
                   </div>
+                  {platform.group === "Desktop" && desktop.version && (
+                    <p className={styles.version}>v{desktop.version}</p>
+                  )}
+                  {platform.group === "Mobile" && mobile.version && (
+                    <p className={styles.version}>v{mobile.version}</p>
+                  )}
                 </div>
               );
             })}
