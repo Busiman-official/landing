@@ -1,0 +1,19 @@
+.track {
+  position: sticky;
+  top: 68px;
+  z-index: 40;
+  height: 3px;
+  background: var(--line);
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--amber), #ff8a00);
+  transition: width 0.1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}

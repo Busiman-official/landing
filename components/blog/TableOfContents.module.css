@@ -1,0 +1,89 @@
+.desktop {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+
+.label {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.desktop ul,
+.mobile ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.desktop li,
+.mobile li {
+  border-left: 2px solid var(--line);
+}
+
+.desktop .sub,
+.mobile .sub {
+  padding-left: 14px;
+}
+
+.desktop a,
+.mobile a {
+  display: block;
+  padding: 6px 0 6px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  transition: color 0.15s;
+}
+
+.desktop a:hover,
+.mobile a:hover {
+  color: var(--navy);
+}
+
+.desktop .active {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.desktop li:has(.active) {
+  border-color: var(--amber);
+}
+
+.mobile {
+  display: none;
+}
+
+.mobile summary {
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: var(--navy);
+  padding: 14px 0;
+}
+
+.mobile ul {
+  padding-bottom: 12px;
+}
+
+@media (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 0 0 24px;
+  }
+}

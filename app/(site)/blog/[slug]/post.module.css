@@ -1,12 +1,18 @@
-.section {
-  background: var(--ground);
-  padding: 72px 0 96px;
+.header {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 35px,
+      rgba(18, 59, 109, 0.055) 35px 36px
+    ),
+    var(--ground);
+  border-bottom: 1px solid var(--line);
 }
 
-.inner {
-  max-width: 680px;
+.headerInner {
+  max-width: 760px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 56px 24px 32px;
 }
 
 .back {
@@ -14,15 +20,17 @@
   font-size: 14px;
   font-weight: 700;
   color: var(--ink-soft);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .back:hover {
   color: var(--navy);
 }
 
-.date {
-  display: block;
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -30,18 +38,54 @@
   font-variant-numeric: tabular-nums;
 }
 
+.dot {
+  opacity: 0.6;
+}
+
 .title {
-  margin: 10px 0 0;
+  margin: 14px 0 0;
   font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 800;
   letter-spacing: -0.9px;
+  max-width: 26ch;
+}
+
+.heroWrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--tint);
+  border: 1px solid var(--line);
+}
+
+.heroImg {
+  object-fit: cover;
+}
+
+.layout {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  align-items: start;
 }
 
 .prose {
-  margin-top: 40px;
   font-size: 17px;
   line-height: 1.75;
   color: var(--ink);
+  max-width: 680px;
+  scroll-margin-top: 96px;
 }
 
 .prose :global(p) {
@@ -53,7 +97,17 @@
   font-weight: 800;
   letter-spacing: -0.4px;
   color: var(--navy);
-  margin: 40px 0 16px;
+  margin: 44px 0 16px;
+  scroll-margin-top: 96px;
+}
+
+.prose :global(h3) {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: var(--navy);
+  margin: 32px 0 14px;
+  scroll-margin-top: 96px;
 }
 
 .prose :global(a) {
@@ -75,4 +129,21 @@
 
 .prose :global(strong) {
   color: var(--navy);
+}
+
+.prose :global(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin: 28px 0;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 24px;
+  }
 }
