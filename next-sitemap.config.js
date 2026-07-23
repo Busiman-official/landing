@@ -5,7 +5,7 @@ module.exports = {
     sitemapSize: 7000,
     changefreq: 'daily',
     priority: 0.7,
-    exclude: ['/admin/*', '/api/*'], // agar koi private/API routes hai jo index nahi karne
+    exclude: ['/admin/*', '/api/*', '/icon.png', '/reports/*'], // private/API/non-page routes
     robotsTxtOptions: {
       policies: [
         { userAgent: '*', allow: '/' },
