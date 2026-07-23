@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Heading } from "@/lib/blog";
+import type { Heading } from "@/lib/markdown";
 import styles from "./TableOfContents.module.css";
 
 export function TableOfContents({ headings }: { headings: Heading[] }) {

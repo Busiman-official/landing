@@ -3,8 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import { ReadingProgress } from "@/components/blog/ReadingProgress";
-import { TableOfContents } from "@/components/blog/TableOfContents";
+import { ReadingProgress } from "@/components/shared/ReadingProgress";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import styles from "./post.module.css";
 
 export function generateStaticParams() {

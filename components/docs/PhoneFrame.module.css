@@ -1,0 +1,20 @@
+.phone {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  box-shadow:
+    0 24px 48px -20px rgba(18, 59, 109, 0.28),
+    0 4px 14px rgba(18, 59, 109, 0.08);
+  padding: 12px;
+}
+
+.screen {
+  position: relative;
+  background: var(--tint);
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+}

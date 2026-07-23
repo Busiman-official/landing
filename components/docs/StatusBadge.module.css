@@ -1,0 +1,38 @@
+.live,
+.partial {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.live {
+  color: #1a7a4c;
+  background: #e8f7ee;
+  border-color: #bfe8d1;
+}
+
+.partial {
+  color: #8a5b00;
+  background: var(--amber-soft);
+  border-color: var(--amber-line);
+}
+
+.platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--ink-soft);
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+}

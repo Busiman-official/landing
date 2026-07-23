@@ -9,6 +9,7 @@ export function Footer() {
         <Logo className={styles.logo} />
         <span>© 2026 Busiman. Free office management for every business.</span>
         <div className={styles.links}>
+          <Link href="/docs">Docs</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms">Terms</Link>

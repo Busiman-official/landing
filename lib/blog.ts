@@ -1,16 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked, Renderer } from "marked";
+import { renderMarkdown, estimateReadingTime, type Heading } from "@/lib/markdown";
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog");
-const WORDS_PER_MINUTE = 200;
 
-export type Heading = {
-  id: string;
-  text: string;
-  level: number;
-};
+export type { Heading };
 
 export type PostMeta = {
   slug: string;
@@ -32,50 +27,6 @@ function readSlugs(): string[] {
     .readdirSync(BLOG_DIR)
     .filter((file) => file.endsWith(".md"))
     .map((file) => file.replace(/\.md$/, ""));
-}
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-");
-}
-
-function estimateReadingTime(content: string): number {
-  const words = content
-    .replace(/```[\s\S]*?```/g, " ")
-    .split(/\s+/)
-    .filter(Boolean).length;
-  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
-}
-
-// Renders markdown to HTML, tagging every h2/h3 with a slug id and
-// collecting them so the post page can build a table of contents.
-function renderWithHeadings(content: string): { html: string; headings: Heading[] } {
-  const headings: Heading[] = [];
-  const seen = new Map<string, number>();
-  const renderer = new Renderer();
-
-  renderer.heading = ({ tokens, depth, text }) => {
-    const base = slugify(text);
-    const count = seen.get(base) ?? 0;
-    seen.set(base, count + 1);
-    const id = count === 0 ? base : `${base}-${count}`;
-    const inline = renderer.parser.parseInline(tokens);
-
-    if (depth === 2 || depth === 3) headings.push({ id, text, level: depth });
-
-    return `<h${depth} id="${id}">${inline}</h${depth}>\n`;
-  };
-
-  renderer.image = ({ href, title, text }) => {
-    const titleAttr = title ? ` title="${title}"` : "";
-    return `<img src="${href}" alt="${text}"${titleAttr} loading="lazy" />`;
-  };
-
-  const html = marked.parse(content, { renderer, async: false }) as string;
-  return { html, headings };
 }
 
 export function getAllPosts(): PostMeta[] {
@@ -101,7 +52,7 @@ export function getPostBySlug(slug: string): Post | null {
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
-  const { html, headings } = renderWithHeadings(content);
+  const { html, headings } = renderMarkdown(content);
 
   return {
     slug,
