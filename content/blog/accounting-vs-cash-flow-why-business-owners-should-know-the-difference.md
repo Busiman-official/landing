@@ -117,7 +117,7 @@ Neither one is more important than the other. They work together to give you a c
 
 By understanding both, you'll be better prepared to handle slow payment cycles, manage expenses, make confident business decisions, and plan for long-term growth instead of reacting to short-term cash shortages.
 
-Whether you're running a retail shop, a wholesale business, a dairy, or a growing enterprise, developing strong accounting habits while actively monitoring cash flow will help you build a more stable and profitable business.
+Whether you're running a retail shop, a wholesale business, a dairy, or a growing enterprise, dexveloping strong accounting habits while actively monitoring cash flow will help you build a more stable and profitable business.
 
 And as your business grows, modern business management platforms like Busiman can make this process much easier by helping you track sales, expenses, receivables, and cash flow from one place.
 
