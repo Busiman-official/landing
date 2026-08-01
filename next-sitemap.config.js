@@ -10,8 +10,5 @@ module.exports = {
       policies: [
         { userAgent: '*', allow: '/' },
       ],
-      additionalSitemaps: [
-        'https://www.busiman.org/sitemap.xml',
-      ],
     },
   }
