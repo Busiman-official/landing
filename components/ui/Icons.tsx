@@ -4,7 +4,12 @@ export type FeatureIconName =
   | "inventory"
   | "service"
   | "sales"
-  | "purchase";
+  | "purchase"
+  | "fsm"
+  | "team"
+  | "expense"
+  | "location"
+  | "bell";
 
 export type PlatformIconName = "windows" | "apple" | "android";
 
@@ -23,6 +28,13 @@ const featurePaths: Record<FeatureIconName, string> = {
   sales: "M3 3v18h18 M7 15l4-4 3 3 6-6 M20 8V5h-3",
   purchase:
     "M9 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z M19 21a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6",
+  fsm: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z",
+  team: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75",
+  expense:
+    "M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M1 10h22",
+  location:
+    "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
+  bell: "M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9 M13.73 21a2 2 0 0 1-3.46 0",
 };
 
 export function FeatureIcon({

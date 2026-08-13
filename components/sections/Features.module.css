@@ -82,6 +82,23 @@
   color: var(--ink);
 }
 
+.more {
+  display: inline-block;
+  margin-top: 36px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 2px;
+  transition: color 0.15s;
+}
+
+.more:hover,
+.more:focus-visible {
+  color: var(--amber);
+  outline: none;
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr 1fr;

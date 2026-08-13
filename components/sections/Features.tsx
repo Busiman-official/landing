@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FeatureIcon } from "@/components/ui/Icons";
 import { features } from "@/lib/content";
 import styles from "./Features.module.css";
@@ -27,6 +28,10 @@ export function Features() {
             </div>
           ))}
         </div>
+
+        <Link href="/features" className={styles.more}>
+          See the full feature deep dive &rarr;
+        </Link>
       </div>
     </section>
   );

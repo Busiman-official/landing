@@ -1,0 +1,431 @@
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #b07600;
+  margin: 0 0 14px;
+}
+
+.h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  max-width: 22ch;
+}
+
+.h2Small {
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 35px,
+      rgba(18, 59, 109, 0.055) 35px 36px
+    ),
+    var(--ground);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding: 76px 24px 88px;
+}
+
+.h1 {
+  font-size: clamp(32px, 4.2vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  max-width: 18ch;
+}
+
+.lede {
+  font-size: 18px;
+  max-width: 52ch;
+  margin: 18px 0 0;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 26px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.trust span::before {
+  content: "✓";
+  color: var(--amber);
+  font-weight: 800;
+  margin-right: 7px;
+}
+
+@media (max-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    padding-top: 52px;
+  }
+}
+
+/* Intro / definition */
+
+.intro {
+  border-top: 1px solid var(--line);
+  padding: 56px 0;
+}
+
+.introText {
+  max-width: 68ch;
+  margin: 16px 0 0;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* Proof band */
+
+.proofBand {
+  background: var(--navy);
+  padding: 40px 0;
+}
+
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.proofTile {
+  text-align: center;
+}
+
+.proofValue {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  color: var(--amber);
+  letter-spacing: -0.4px;
+}
+
+.proofLabel {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #c3d1e6;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .proofGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+}
+
+/* Capabilities */
+
+.capabilities {
+  padding: 72px 0;
+}
+
+.capList {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.capRow {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  border-top: 1px solid var(--line);
+  padding-top: 36px;
+}
+
+.capRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.capRowReverse {
+  flex-direction: row-reverse;
+}
+
+.capIconCol {
+  flex: none;
+}
+
+.capBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.capIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  background: var(--amber-soft);
+  display: grid;
+  place-items: center;
+}
+
+.capIconSvg {
+  width: 28px;
+  height: 28px;
+  color: var(--navy);
+}
+
+.capTitle {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.capDesc {
+  margin: 10px 0 0;
+  font-size: 16px;
+  color: var(--ink);
+  max-width: 62ch;
+}
+
+.capBullets {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  max-width: 62ch;
+}
+
+.capBullets li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.capBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--amber);
+}
+
+@media (max-width: 640px) {
+  .capRow,
+  .capRowReverse {
+    flex-direction: column;
+  }
+}
+
+/* Built for */
+
+.builtFor {
+  background: var(--tint);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 72px 0;
+}
+
+.builtForGrid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.builtForCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px 26px;
+}
+
+.builtForTitle {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: var(--navy);
+}
+
+.builtForDesc {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .builtForGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Connected modules */
+
+.connected {
+  padding: 72px 0;
+}
+
+.categoryDesc {
+  margin: 12px 0 0;
+  max-width: 62ch;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.connGrid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.connCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.connPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.connArrow {
+  color: var(--amber);
+}
+
+.connText {
+  margin: 12px 0 0;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+@media (max-width: 800px) {
+  .connGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FAQ */
+
+.faq {
+  background: var(--tint);
+  border-top: 1px solid var(--line);
+  padding: 72px 0;
+}
+
+.faqList {
+  margin-top: 32px;
+  display: grid;
+  gap: 22px;
+  max-width: 800px;
+}
+
+.faqItem {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 26px;
+}
+
+.faqQ {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.2px;
+}
+
+.faqA {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* CTA */
+
+.cta {
+  padding: 72px 0 96px;
+  text-align: center;
+}
+
+.ctaH2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.ctaSub {
+  margin: 14px auto 0;
+  max-width: 52ch;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+  color: var(--navy);
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
