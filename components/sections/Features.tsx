@@ -17,14 +17,16 @@ export function Features() {
           purchase.
         </p>
 
-        <div className={styles.grid}>
+        <div className={styles.sheet}>
           {features.map((feature) => (
-            <div key={feature.title} className={styles.card}>
+            <div key={feature.title} className={styles.row}>
               <div className={styles.icon}>
                 <FeatureIcon name={feature.icon} className={styles.iconSvg} />
               </div>
-              <h3 className={styles.title}>{feature.title}</h3>
-              <p className={styles.desc}>{feature.description}</p>
+              <div className={styles.rowText}>
+                <h3 className={styles.title}>{feature.title}</h3>
+                <p className={styles.desc}>{feature.description}</p>
+              </div>
             </div>
           ))}
         </div>
