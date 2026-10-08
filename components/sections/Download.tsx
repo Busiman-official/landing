@@ -49,7 +49,7 @@ export async function Download() {
                     <div className={styles.cardIcon}>
                       <GroupIcon className={styles.cardIconSvg} />
                     </div>
-                    <div>
+                    <div className={styles.cardHeadText}>
                       <h3 className={styles.cardTitle}>{platform.group}</h3>
                       <p className={styles.cardTagline}>{platform.tagline}</p>
                     </div>

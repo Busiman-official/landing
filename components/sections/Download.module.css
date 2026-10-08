@@ -52,6 +52,10 @@
 }
 
 .card {
+  /* Grid items default to a min-width of their content's natural (unwrapped) size, which can
+     force the track wider than the viewport - min-width: 0 lets the card actually shrink to the
+     column it's given and wrap its text instead. */
+  min-width: 0;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -62,6 +66,10 @@
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.cardHeadText {
+  min-width: 0;
 }
 
 .cardIcon {
@@ -114,6 +122,7 @@
 
 .optionBtn {
   flex: 1;
+  min-width: 0;
   padding: 10px 14px;
   font-size: 13.5px;
 }
