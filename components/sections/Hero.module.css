@@ -31,33 +31,11 @@
   padding: 88px 24px 96px;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--amber-soft);
-  border: 1px solid var(--amber-line);
-  color: #8a5b00;
-  font-weight: 700;
-  font-size: 13.5px;
-  letter-spacing: 0.4px;
-  padding: 7px 16px;
-  border-radius: 999px;
-}
-
-.badge::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--amber);
-}
-
 .h1 {
   font-size: clamp(36px, 4.6vw, 56px);
   font-weight: 800;
   letter-spacing: -1.2px;
-  margin: 22px 0 0;
+  margin: 0;
 }
 
 .highlight {
@@ -100,5 +78,9 @@
   .inner {
     grid-template-columns: 1fr;
     padding-top: 56px;
+  }
+
+  .hero::before {
+    display: none;
   }
 }

@@ -9,7 +9,6 @@ export function Hero() {
     <header className={styles.hero}>
       <div className={styles.inner}>
         <div>
-          <span className={styles.badge}>100% FREE FOREVER</span>
           <h1 className={styles.h1}>
             Run your whole office from{" "}
             <span className={styles.highlight}>one free app.</span>

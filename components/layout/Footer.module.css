@@ -22,9 +22,16 @@
 
 .links {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 10px 24px;
   margin-left: auto;
   font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .links {
+    margin-left: 0;
+  }
 }
 
 .links a:hover {

@@ -123,6 +123,7 @@
 
 .chip {
   position: absolute;
+  max-width: 180px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 14px;

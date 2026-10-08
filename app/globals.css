@@ -43,6 +43,10 @@ body {
   background: var(--ground);
   color: var(--ink);
   font-family: var(--font-body);
+  /* Safety net, not the fix for any specific overflow — the actual causes (unwrapped nav links,
+     unconstrained decorative chips) are fixed at the source in their own components. This just
+     stops the page itself from ever growing a horizontal scrollbar if something is missed. */
+  overflow-x: hidden;
 }
 
 h1,

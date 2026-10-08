@@ -10,11 +10,11 @@
 .inner {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
-  gap: 32px;
-  height: 68px;
+  gap: 24px;
+  height: 64px;
 }
 
 .links {
@@ -24,6 +24,7 @@
   font-size: 15px;
   font-weight: 600;
   color: var(--ink);
+  white-space: nowrap;
 }
 
 .links a {
@@ -40,12 +41,22 @@
 }
 
 .cta {
+  flex: none;
   padding: 9px 20px;
   font-size: 14px;
 }
 
+/* Mobile has no room for the full link row and the Download button alongside the logo without
+   wrapping or overflowing - it keeps only the phone number (the fastest way to actually reach
+   someone from a phone) and drops "Features" and the Download button, which both live further
+   down the page anyway (the Features section, and the Download section's own buttons). */
 @media (max-width: 900px) {
+  .featureLink,
   .cta {
     display: none;
+  }
+
+  .links {
+    margin-left: auto;
   }
 }

@@ -2,7 +2,7 @@ import type { FeatureIconName, PlatformIconName } from "@/components/ui/Icons";
 
 export const navLinks: { label: string; href: string }[] = [
   { label: "Features", href: "/features" },
-  { label: "Call: +91 8065193805", href: "#contact" },
+  { label: "Call: +91 7500673358", href: "#contact" },
 ];
 
 export type Feature = {
