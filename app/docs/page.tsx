@@ -4,8 +4,10 @@ import { docsNav } from "@/lib/docs-nav";
 import styles from "./docs-home.module.css";
 
 export const metadata: Metadata = {
-  title: "Documentation — Busiman",
-  description: "Everything you need to run Busiman across desktop and mobile.",
+  title: "Documentation: Set Up and Run the App",
+  description:
+    "Step-by-step guides for installing Busiman on desktop and mobile, setting up your organisation, and running attendance, shifts and more.",
+  alternates: { canonical: "/docs" },
 };
 
 export default function DocsHome() {

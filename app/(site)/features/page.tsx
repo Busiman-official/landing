@@ -6,9 +6,10 @@ import { featureCategories } from "@/lib/content";
 import styles from "./features.module.css";
 
 export const metadata: Metadata = {
-  title: "Features — Busiman",
+  title: "Features: Calls, Attendance, Inventory & Sales",
   description:
-    "A deep dive into every Busiman module: calls, Field Service Management (FSM), attendance, inventory, sales, purchase, team and more.",
+    "See every Busiman module in depth: calls, field service (FSM), attendance, inventory, sales, purchase, expenses and multi-branch. All free.",
+  alternates: { canonical: "/features" },
 };
 
 export default function FeaturesPage() {

@@ -70,7 +70,7 @@ export function LoadingScreen() {
     >
       <div className={styles.mark}>
         <Image
-          src="/images/busiman-logo-animation.gif"
+          src="/images/busiman-logo-animation.webp"
           alt="Busiman"
           width={510}
           height={182}

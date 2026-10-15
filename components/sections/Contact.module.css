@@ -1,0 +1,88 @@
+.section {
+  padding: 0 0 88px;
+  /* Anchor jumps land below the sticky navbar instead of underneath it. */
+  scroll-margin-top: 80px;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  background: var(--navy);
+  border-radius: 24px;
+  padding: 56px 48px;
+}
+
+.h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: #fff;
+}
+
+.sub {
+  margin: 12px 0 0;
+  max-width: 40ch;
+  font-size: 16.5px;
+  color: #cbd8ea;
+}
+
+.methods {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.method {
+  display: block;
+  min-width: 0;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.method:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--amber);
+}
+
+.method:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.methodLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber-line);
+}
+
+.methodValue {
+  display: block;
+  margin-top: 2px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 760px) {
+  .box {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 24px;
+  }
+}

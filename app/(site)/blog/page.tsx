@@ -5,9 +5,10 @@ import { getAllPosts } from "@/lib/blog";
 import styles from "./blog.module.css";
 
 export const metadata: Metadata = {
-  title: "Blog — Busiman",
+  title: "Blog: Practical Guides for Running a Small Business",
   description:
-    "Practical guides on running a small business without the paperwork.",
+    "Practical guides for Indian business owners on inventory, cash flow, attendance and day-to-day management, without the paperwork.",
+  alternates: { canonical: "/blog" },
 };
 
 function formatDate(date: string) {

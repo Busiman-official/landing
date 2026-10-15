@@ -6,9 +6,10 @@ import { DispatchBoard } from "@/components/ui/DispatchBoard";
 import styles from "./fsm.module.css";
 
 export const metadata: Metadata = {
-  title: "Field Service Management (FSM) — Busiman",
+  title: "Free Field Service Management (FSM) Software",
   description:
-    "Dispatch, mobile technician app, service history and real-time visibility for field teams — the Field Service Management module built into Busiman, free.",
+    "Dispatch engineers, file service reports with photos and signatures, and track every machine's visit history. Built into Busiman, free.",
+  alternates: { canonical: "/features/field-service-management" },
 };
 
 const proof: { value: string; label: string }[] = [

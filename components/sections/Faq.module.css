@@ -1,0 +1,98 @@
+.section {
+  padding: 0 0 88px;
+}
+
+.inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.h2 {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  max-width: 22ch;
+}
+
+.list {
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  border-bottom: 1px solid var(--line);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  list-style: none;
+}
+
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.question:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* A plus that turns into a minus: the vertical bar collapses when the item opens, so the icon
+   shows the state change rather than just spinning. */
+.marker {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.marker::before,
+.marker::after {
+  content: "";
+  position: absolute;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+.marker::before {
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2.5px;
+}
+
+.marker::after {
+  top: 0;
+  left: 5.75px;
+  width: 2.5px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.item[open] .marker::after {
+  transform: scaleY(0);
+}
+
+.answer {
+  margin: 0;
+  padding: 0 4px 22px;
+  max-width: 62ch;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker::after {
+    transition: none;
+  }
+}

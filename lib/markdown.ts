@@ -16,6 +16,15 @@ export function slugify(text: string): string {
     .replace(/\s+/g, "-");
 }
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export function estimateReadingTime(content: string): number {
   const words = content
     .replace(/```[\s\S]*?```/g, " ")
@@ -59,6 +68,22 @@ export function renderMarkdown(content: string): { html: string; headings: Headi
     }
     return `<blockquote>\n${inner}</blockquote>\n`;
   };
+
+  // Mermaid diagrams: keep the escaped source in the HTML (readable
+  // fallback); a client component swaps it for a rendered SVG. Every other
+  // language falls through to marked's default code rendering.
+  const defaultCode = renderer.code.bind(renderer);
+  renderer.code = (token) => {
+    const { text, lang } = token;
+    if ((lang ?? "").trim().split(/\s+/)[0] === "mermaid") {
+      return `<pre class="mermaid">${escapeHtml(text)}</pre>\n`;
+    }
+    return defaultCode(token);
+  };
+
+  // Wide tables scroll inside their own box instead of being clipped on phones.
+  const defaultTable = renderer.table.bind(renderer);
+  renderer.table = (token) => `<div class="table-scroll">${defaultTable(token)}</div>\n`;
 
   const html = marked.parse(content, { renderer, async: false }) as string;
   return { html, headings };

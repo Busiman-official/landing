@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { ReadingProgress } from "@/components/shared/ReadingProgress";
 import { TableOfContents } from "@/components/shared/TableOfContents";
+import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
+import { SITE_NAME, absoluteUrl } from "@/lib/site";
 import styles from "./post.module.css";
 
 export function generateStaticParams() {
@@ -20,9 +22,21 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Busiman`,
+    title: post.title,
     description: post.excerpt,
-    openGraph: post.image ? { images: [post.image] } : undefined,
+    alternates: { canonical: `/blog/${post.slug}` },
+    // openGraph is replaced (not merged) from the root layout, so the shared fields are repeated.
+    // With no post image, fall back to the site-wide generated opengraph-image.
+    openGraph: {
+      type: "article",
+      siteName: SITE_NAME,
+      locale: "en_IN",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      publishedTime: post.date,
+      images: [post.image ?? "/opengraph-image"],
+    },
   };
 }
 
@@ -43,8 +57,30 @@ export default async function BlogPost({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const postJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.date,
+      dateModified: post.date,
+      inLanguage: "en-IN",
+      mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+      image: post.image ? absoluteUrl(post.image) : absoluteUrl("/opengraph-image"),
+      author: { "@type": "Organization", name: SITE_NAME },
+      publisher: { "@id": absoluteUrl("/#organization") },
+    },
+    breadcrumbLd([
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ]),
+  ];
+
   return (
     <article>
+      <JsonLd data={postJsonLd} />
       <ReadingProgress targetId="post-body" />
 
       <div className={styles.header}>

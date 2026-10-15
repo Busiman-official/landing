@@ -8,9 +8,9 @@ const page = getLegalPage("delete-account");
 const sections = page.headings.filter((h) => h.level === 2);
 
 export const metadata: Metadata = {
-  title: "Delete Your Account — Busiman",
+  title: "Delete Your Account",
   description: page.summary,
-  alternates: { canonical: "https://www.busiman.org/delete-account" },
+  alternates: { canonical: "/delete-account" },
 };
 
 function formatDate(date: string) {

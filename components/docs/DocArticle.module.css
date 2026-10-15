@@ -36,6 +36,7 @@
   line-height: 1.75;
   color: var(--ink);
   max-width: 680px;
+  min-width: 0;
   scroll-margin-top: 96px;
 }
 
@@ -233,4 +234,70 @@
   .pagerNext {
     text-align: left;
   }
+}
+
+/* Mermaid diagrams: readable source until rendered; the box scrolls
+   sideways on narrow screens instead of widening the page. */
+.prose :global(pre.mermaid) {
+  margin: 0 0 24px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow-x: auto;
+  max-width: 100%;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose :global(pre.mermaid[data-rendered]) {
+  white-space: normal;
+  text-align: center;
+  background: var(--ground);
+}
+
+.prose :global(pre.mermaid svg) {
+  display: inline-block;
+  height: auto;
+  max-width: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .prose :global(pre.mermaid[data-rendered]) {
+    animation: mermaid-in 0.25s ease-out;
+  }
+  @keyframes mermaid-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* The global reduced-motion rule sets transition-duration to ~0 on every
+   element, which makes Mermaid measure its layout mid-transition and blow
+   diagrams up to thousands of pixels. Diagrams do not animate, so turn
+   transitions off outright inside them (and their temporary measuring box). */
+:global([id^="busiman-mermaid-"]),
+:global([id^="busiman-mermaid-"] *),
+:global([id^="dbusiman-mermaid-"]),
+:global([id^="dbusiman-mermaid-"] *) {
+  transition: none !important;
+}
+
+.prose :global(.table-scroll) {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose :global(.table-scroll table) {
+  margin: 0;
+  min-width: 480px;
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReadingProgress } from "@/components/shared/ReadingProgress";
 import { TableOfContents } from "@/components/shared/TableOfContents";
+import { MermaidDiagrams } from "@/components/docs/MermaidDiagrams";
 import { StatusBadge, PlatformTag } from "@/components/docs/StatusBadge";
 import { findAdjacentPages } from "@/lib/docs-nav";
 import type { DocPage } from "@/lib/docs";
@@ -29,6 +30,7 @@ export function DocArticle({ doc }: { doc: DocPage }) {
           dangerouslySetInnerHTML={{ __html: doc.html }}
         />
         <TableOfContents headings={doc.headings} />
+        {doc.html.includes('class="mermaid"') && <MermaidDiagrams rootId="doc-body" />}
       </div>
 
       {(prev || next) && (

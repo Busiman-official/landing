@@ -10,9 +10,9 @@ const policy = getLegalPage("privacy-policy");
 const sections = policy.headings.filter((h) => h.level === 2);
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Busiman",
+  title: "Privacy Policy",
   description: policy.summary,
-  alternates: { canonical: "https://www.busiman.org/privacy-policy" },
+  alternates: { canonical: "/privacy-policy" },
 };
 
 function formatDate(date: string) {

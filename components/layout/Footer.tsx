@@ -14,7 +14,7 @@ export function Footer() {
           <Link href="/blog">Blog</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms">Terms</Link>
-          <Link href="#contact">Contact</Link>
+          <Link href="/#contact">Contact</Link>
         </div>
       </div>
     </footer>

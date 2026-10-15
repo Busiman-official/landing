@@ -83,6 +83,8 @@ export async function generateMetadata({
   return {
     title,
     description,
+    // A shared report is private to whoever holds the link; keep it out of search results.
+    robots: { index: false, follow: false },
     openGraph: {
       title,
       description,

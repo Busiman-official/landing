@@ -18,13 +18,15 @@ export async function Download() {
     getLatestMobileRelease(),
   ]);
 
-  const hrefFor = (group: string, label: string): string => {
+  // null means "no download yet" (currently iOS). Those render as a plain "coming soon" chip
+  // instead of a link to "#", which crawlers read as a dead link and users read as a broken button.
+  const hrefFor = (group: string, label: string): string | null => {
     if (group === "Desktop" && label === "Windows")
       return desktop.windows ?? DESKTOP_RELEASES_PAGE;
     if (group === "Desktop" && label === "macOS")
       return desktop.mac ?? DESKTOP_RELEASES_PAGE;
     if (group === "Mobile" && label === "Android") return mobile.android;
-    return "#";
+    return null;
   };
 
   return (
@@ -58,10 +60,24 @@ export async function Download() {
                   <div className={styles.options}>
                     {platform.options.map((option) => {
                       const OptionIcon = platformIcons[option.icon];
+                      const href = hrefFor(platform.group, option.label);
+                      if (!href) {
+                        return (
+                          <span
+                            key={option.label}
+                            className={styles.soon}
+                            aria-label={`${option.label}: coming soon`}
+                          >
+                            <OptionIcon className={styles.optionIcon} />
+                            {option.label}
+                            <span className={styles.soonTag}>Soon</span>
+                          </span>
+                        );
+                      }
                       return (
                         <Button
                           key={option.label}
-                          href={hrefFor(platform.group, option.label)}
+                          href={href}
                           target="_blank"
                           rel="noopener noreferrer"
                           variant="ghost"

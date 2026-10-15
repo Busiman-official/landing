@@ -14,7 +14,7 @@ export function Navbar() {
     <nav className={styles.nav}>
       <div className={styles.inner}>
         <Link href="/" aria-label="Busiman home">
-          <Logo />
+          <Logo priority />
         </Link>
         <div className={styles.links}>
           <Link href={featureLink.href} className={styles.featureLink}>
@@ -24,7 +24,7 @@ export function Navbar() {
             {callLink.label}
           </Link>
         </div>
-        <Button href="#download" size="md" className={styles.cta}>
+        <Button href="/#download" size="md" className={styles.cta}>
           Download
         </Button>
       </div>
