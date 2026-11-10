@@ -13,10 +13,11 @@ import {
 import "./globals.css";
 import "./site.css";
 
+// Variable fonts: no `weight` list, so Next requests one font file that covers every weight
+// (a weight array makes Vercel's build fail with "queries have exactly one entry").
 const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "700", "800"],
 });
 
 const body = Inter({
@@ -27,7 +28,6 @@ const body = Inter({
 const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
