@@ -1,0 +1,10 @@
+:global(.bm) .pcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s ease,box-shadow .15s ease}
+:global(.bm) .pcard:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);border-color:var(--ink)}
+:global(.bm) .pcard img{height:170px;width:100%;object-fit:cover;object-position:center 30%}
+:global(.bm) .pcard .pb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+:global(.bm) .pcard h2{font-size:22px;font-weight:700}
+:global(.bm) .pcard p{color:var(--muted);font-size:15px}
+:global(.bm) .pcard .go{margin-top:auto;font-weight:600;color:var(--navy);font-size:15px}
+:global(.bm) .note{border-left:6px solid var(--amber);background:#fff;padding:16px 20px;border-radius:0 12px 12px 0;font-size:17px;color:var(--ink)}
+@media (max-width:980px){:global(.bm) .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:560px){:global(.bm) .pgrid{grid-template-columns:minmax(0,1fr)!important}}

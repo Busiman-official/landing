@@ -1,0 +1,18 @@
+:global(.bm) .hl{background:linear-gradient(transparent 62%,var(--amber) 62%,var(--amber) 92%,transparent 92%)}
+:global(.bm) .flow{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:start}
+:global(.bm) .steps{display:flex;flex-direction:column;gap:10px}
+:global(.bm) .steps button{display:flex;gap:14px;align-items:center;text-align:left;font:inherit;font-weight:600;font-size:17px;min-height:64px;padding:12px 18px;border:2px solid #4D7BA5;border-radius:14px;background:transparent;color:#fff;cursor:pointer}
+:global(.bm) .steps button:hover{background:rgba(255,255,255,.08)}
+:global(.bm) .steps button.on{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+:global(.bm) .steps b{font-family:var(--font-mono),monospace;font-size:14px;min-width:26px}
+:global(.bm) .parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+:global(.bm) .parts :global(.card){border-left:6px solid var(--amber)}
+:global(.bm) .rl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:global(.bm) .rl a{display:block;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:22px;text-decoration:none;color:inherit}
+:global(.bm) .rl a:hover{box-shadow:5px 5px 0 var(--ink)}
+:global(.bm) .rl b{display:block;font-family:var(--font-display),sans-serif;font-size:21px;margin-bottom:6px}
+:global(.bm) .rl p{color:var(--muted);font-size:15px}
+@media (max-width:980px){:global(.bm) .flow{grid-template-columns:minmax(0,1fr)}:global(.bm) .parts,:global(.bm) .rl{grid-template-columns:minmax(0,1fr)}}
+
+/* Tailwind preflight zeroes heading weight; the design relies on the browser default bold for h3 */
+:global(.bm) h3{font-weight:700}

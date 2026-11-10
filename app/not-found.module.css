@@ -1,0 +1,14 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .nf{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:64px;align-items:center}
+:global(.bm) .nf :global(.slip){padding:28px 26px;transform:rotate(-1.5deg)}
+:global(.bm) .big{font-family:var(--font-mono),monospace;font-weight:600;font-size:120px;line-height:1;color:var(--ink);letter-spacing:.04em;margin:6px 0}
+:global(.bm) .nf .stampwrap{display:flex;justify-content:flex-end;margin-top:6px}
+:global(.bm) .nf :global(.stamp){font-size:16px;padding:5px 12px}
+:global(.bm) .sbox{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+:global(.bm) .sbox :global(.field){flex:1 1 260px}
+:global(.bm) .links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+:global(.bm) .links a:global(.card){text-decoration:none;gap:6px;transition:border-color .15s}
+:global(.bm) .links a:global(.card):hover{border-color:var(--navy)}
+:global(.bm) .links a:global(.card) h3{font-size:21px}
+@media (max-width:980px){:global(.bm) .nf{grid-template-columns:minmax(0,1fr);gap:40px}:global(.bm) .links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){:global(.bm) .big{font-size:84px}:global(.bm) .links{grid-template-columns:minmax(0,1fr)}}

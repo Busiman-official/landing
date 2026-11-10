@@ -1,180 +1,296 @@
+/* Article chrome. Rules that fight site.css's `.bm h1..h4 { margin:0; line-height }` are
+   prefixed with :global(.bm) so they win on specificity. */
+
+.crumbs {
+  margin: 0 0 20px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 12px;
+}
+
 .header {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--ink);
   padding-bottom: 28px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .badges {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.title {
-  font-size: clamp(26px, 3.2vw, 36px);
+:global(.bm) .title {
+  font-size: clamp(34px, 4.6vw, 52px);
   font-weight: 800;
-  letter-spacing: -0.8px;
+  color: var(--ink);
 }
 
 .description {
-  margin: 10px 0 0;
-  font-size: 16px;
-  color: var(--ink);
+  margin: 20px 0 0;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--muted);
   max-width: 62ch;
 }
 
 .body {
   display: grid;
-  grid-template-columns: 1fr 200px;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  column-gap: 48px;
   align-items: start;
 }
 
 .prose {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--ink);
-  max-width: 680px;
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1d3550;
+  max-width: 72ch;
   min-width: 0;
-  scroll-margin-top: 96px;
+  overflow-wrap: break-word;
+  scroll-margin-top: 100px;
 }
 
-.prose :global(p) {
+:global(.bm) .prose :global(p) {
   margin: 0 0 18px;
+  color: #1d3550;
 }
 
-.prose :global(h2) {
+:global(.bm) .prose :global(h2) {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 48px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 100px;
+}
+
+:global(.bm) .prose :global(h2:first-child) {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+:global(.bm) .prose :global(h3) {
   font-size: 22px;
   font-weight: 800;
-  letter-spacing: -0.3px;
+  line-height: 1.2;
   color: var(--navy);
-  margin: 40px 0 14px;
-  scroll-margin-top: 96px;
+  margin: 32px 0 12px;
+  scroll-margin-top: 100px;
 }
 
-.prose :global(h3) {
+:global(.bm) .prose :global(h4) {
   font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.2px;
-  color: var(--navy);
-  margin: 28px 0 12px;
-  scroll-margin-top: 96px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 10px;
 }
 
 .prose :global(a) {
   color: var(--navy);
+  font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--amber-line);
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+}
+
+.prose :global(a:hover) {
+  background: #fff3d6;
 }
 
 .prose :global(ul),
 .prose :global(ol) {
   margin: 0 0 18px;
-  padding-left: 22px;
+  padding-left: 24px;
+}
+
+.prose :global(ul) {
+  list-style: disc;
 }
 
 .prose :global(ol) {
-  padding-left: 24px;
+  list-style: decimal;
 }
 
 .prose :global(li) {
   margin-bottom: 8px;
+  padding-left: 2px;
 }
 
 .prose :global(li)::marker {
-  color: var(--ink-soft);
+  color: var(--navy);
   font-weight: 700;
 }
 
 .prose :global(strong) {
-  color: var(--navy);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.prose :global(hr) {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 32px 0;
+}
+
+/* Tables: wrapped in .table-scroll by the markdown renderer */
+
+.prose :global(.table-scroll) {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 24px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose :global(.table-scroll table) {
+  margin: 0;
+  min-width: 480px;
 }
 
 .prose :global(table) {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 0 20px;
-  font-size: 14.5px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .prose :global(th),
 .prose :global(td) {
   text-align: left;
-  padding: 10px 14px;
+  vertical-align: top;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.prose :global(tr:last-child td) {
+  border-bottom: 0;
 }
 
 .prose :global(th) {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono), monospace;
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.4px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  white-space: nowrap;
 }
 
-.prose :global(td:not(:first-child)),
-.prose :global(th:not(:first-child)) {
-  text-align: center;
+.prose :global(td:first-child) {
+  font-weight: 600;
 }
+
+.prose :global(td p) {
+  margin: 0;
+}
+
+/* Code */
 
 .prose :global(code) {
+  font-family: var(--font-mono), monospace;
   background: var(--tint);
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 1px 6px;
-  font-size: 0.9em;
+  font-size: 0.86em;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.prose :global(pre:not(.mermaid)) {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 14px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.prose :global(pre:not(.mermaid) code) {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  overflow-wrap: normal;
 }
 
 .prose :global(img) {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--line);
+  border-radius: 14px;
+  border: 2px solid var(--ink);
   margin: 24px 0;
 }
 
-/* Callouts — a blockquote whose first word is Tip/Note/Warning */
+/* Callouts: a blockquote whose first word is Tip / Note / Warning */
 
-.prose :global(.callout) {
-  margin: 0 0 20px;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: 1px solid;
-  font-size: 15px;
+:global(.bm) .prose :global(.callout) {
+  margin: 0 0 22px;
+  padding: 16px 20px;
+  border-radius: 0 12px 12px 0;
+  border: 1px solid var(--line);
+  border-left-width: 6px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
 }
 
 .prose :global(.callout p) {
   margin: 0;
+  color: inherit;
 }
 
 .prose :global(.callout + .callout) {
   margin-top: -8px;
 }
 
-.prose :global(.callout-tip) {
-  background: var(--amber-soft);
-  border-color: var(--amber-line);
+:global(.bm) .prose :global(.callout-tip) {
+  background: #fff6e0;
+  border-color: #f2d28a;
+  border-left-color: var(--amber);
 }
 
 .prose :global(.callout-tip strong) {
-  color: #8a5b00;
+  color: var(--amberd);
 }
 
-.prose :global(.callout-note) {
-  background: var(--tint);
+:global(.bm) .prose :global(.callout-note) {
+  background: #fff;
   border-color: var(--line);
+  border-left-color: var(--navy);
 }
 
-.prose :global(.callout-warning) {
-  background: #fdf0ee;
-  border-color: #f3c9c2;
+.prose :global(.callout-note strong) {
+  color: var(--navy);
+}
+
+:global(.bm) .prose :global(.callout-warning) {
+  background: #fdeeec;
+  border-color: #f0c4be;
+  border-left-color: #b3261e;
 }
 
 .prose :global(.callout-warning strong) {
-  color: #b0402f;
+  color: #8c1d18;
 }
 
 /* Prev / next pager */
@@ -185,20 +301,22 @@
   gap: 16px;
   margin-top: 56px;
   padding-top: 28px;
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--ink);
 }
 
 .pagerLink {
   display: block;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  transition: border-color 0.15s, transform 0.15s;
+  padding: 16px 20px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .pagerLink:hover {
-  border-color: #cbd8ea;
-  transform: translateY(-2px);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--amber);
 }
 
 .pagerNext {
@@ -207,26 +325,48 @@
 
 .pagerLabel {
   display: block;
+  font-family: var(--font-mono), monospace;
   font-size: 12px;
-  font-weight: 700;
-  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .pagerTitle {
   display: block;
-  margin-top: 4px;
-  font-size: 14.5px;
+  margin-top: 6px;
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.25;
   color: var(--navy);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .prose {
+    grid-row: auto;
+    max-width: none;
   }
 }
 
 @media (max-width: 600px) {
+  .prose {
+    font-size: 16px;
+  }
+
+  :global(.bm) .prose :global(h2) {
+    font-size: 26px;
+  }
+
+  .description {
+    font-size: 17px;
+  }
+
   .pager {
     grid-template-columns: 1fr;
   }
@@ -241,11 +381,12 @@
 .prose :global(pre.mermaid) {
   margin: 0 0 24px;
   padding: 16px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
   overflow-x: auto;
   max-width: 100%;
+  font-family: var(--font-mono), monospace;
   font-size: 13px;
   line-height: 1.5;
   color: var(--ink);
@@ -256,7 +397,7 @@
 .prose :global(pre.mermaid[data-rendered]) {
   white-space: normal;
   text-align: center;
-  background: var(--ground);
+  background: #fff;
 }
 
 .prose :global(pre.mermaid svg) {
@@ -290,14 +431,8 @@
   transition: none !important;
 }
 
-.prose :global(.table-scroll) {
-  max-width: 100%;
-  overflow-x: auto;
-  margin: 0 0 20px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.prose :global(.table-scroll table) {
-  margin: 0;
-  min-width: 480px;
+@media print {
+  .pager {
+    display: none;
+  }
 }

@@ -3,18 +3,33 @@ import { ReadingProgress } from "@/components/shared/ReadingProgress";
 import { TableOfContents } from "@/components/shared/TableOfContents";
 import { MermaidDiagrams } from "@/components/docs/MermaidDiagrams";
 import { StatusBadge, PlatformTag } from "@/components/docs/StatusBadge";
-import { findAdjacentPages } from "@/lib/docs-nav";
+import { docsNav, findAdjacentPages } from "@/lib/docs-nav";
 import type { DocPage } from "@/lib/docs";
 import styles from "./DocArticle.module.css";
 
 export function DocArticle({ doc }: { doc: DocPage }) {
   const { prev, next } = findAdjacentPages(doc.category, doc.slug);
+  const categoryTitle = docsNav.find((c) => c.slug === doc.category)?.title;
 
   return (
     <article>
       <ReadingProgress targetId="doc-body" />
 
       <header className={styles.header}>
+        <ol className={`crumbs ${styles.crumbs}`} aria-label="Breadcrumb">
+          <li>
+            <Link href="/">Home</Link>
+            <span aria-hidden="true"> /</span>
+          </li>
+          <li>
+            <Link href="/docs">Docs</Link>
+            <span aria-hidden="true"> /</span>
+          </li>
+          <li>
+            <span aria-current="page">{doc.title}</span>
+          </li>
+        </ol>
+        {categoryTitle && <span className={`eyebrow ${styles.eyebrow}`}>{categoryTitle}</span>}
         <div className={styles.badges}>
           <StatusBadge status={doc.status} />
           <PlatformTag platform={doc.platform} />

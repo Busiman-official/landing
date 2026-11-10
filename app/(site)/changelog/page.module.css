@@ -1,0 +1,9 @@
+:global(.bm) .tl{position:relative;padding-left:36px;max-width:760px}
+:global(.bm) .tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--ink)}
+:global(.bm) .tl .dot{position:absolute;left:0;top:10px;width:20px;height:20px;border-radius:50%;background:var(--amber);border:2px solid var(--ink)}
+:global(.bm) .tl .entry{background:#fff;border:2px dashed var(--ink);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;position:relative}
+:global(.bm) .tl .when{font-family:var(--font-mono),monospace;font-size:13px;font-weight:600;color:var(--navy)}
+:global(.bm) .tl h3{font-size:22px;font-weight:700}
+:global(.bm) .tl p{color:var(--muted);margin:0}
+:global(.bm) .note{border-left:6px solid var(--amber);background:#fff;padding:16px 20px;border-radius:0 12px 12px 0;font-size:17px;color:var(--ink)}
+@media (max-width:560px){:global(.bm) .tl{padding-left:30px}}

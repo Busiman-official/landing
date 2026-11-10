@@ -1,0 +1,18 @@
+:global(.bm) .hl{background:linear-gradient(transparent 62%,var(--amber) 62%,var(--amber) 92%,transparent 92%);color:#fff}
+:global(.bm) .tl{position:relative;display:flex;flex-direction:column;gap:0;margin-left:14px;border-left:4px solid var(--ink)}
+:global(.bm) .tl>div{position:relative;padding:0 0 36px 36px}
+:global(.bm) .tl>div:last-child{padding-bottom:0}
+:global(.bm) .tl>div::before{content:"";position:absolute;left:-14px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--amber);border:3px solid var(--ink)}
+:global(.bm) .tl :global(.n){font-family:var(--font-mono),monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-weight:600}
+:global(.bm) .tl h3{font-size:26px;margin:4px 0 6px}
+:global(.bm) .tl p{color:var(--muted);font-size:16px;max-width:520px}
+:global(.bm) .meth{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+:global(.bm) .meth :global(.card){padding:0;overflow:hidden}
+:global(.bm) .meth :global(.card) .in{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px}
+:global(.bm) .meth :global(.card) img{height:170px;border-radius:0;border:0;border-bottom:2px solid var(--ink);object-fit:cover}
+:global(.bm) .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+:global(.bm) .three>div{border-top:3px solid var(--amber);padding-top:16px}
+:global(.bm) .three h3{font-size:22px;color:#fff;margin-bottom:6px}
+:global(.bm) .three p{font-size:15px}
+@media (max-width:980px){:global(.bm) .meth,:global(.bm) .three{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){}

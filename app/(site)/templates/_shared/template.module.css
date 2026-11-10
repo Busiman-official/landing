@@ -1,0 +1,39 @@
+/* Shared by the six document-template pages (design: Template, TplChallan, TplPurchaseOrder, ...). */
+:global(.bm) .tp { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 48px; align-items: start; }
+:global(.bm) .sheet { background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: 32px; box-shadow: 10px 10px 0 var(--amber); font-size: 13px; color: var(--ink); min-width: 0; }
+:global(.bm) .sheet h2 { font-size: 26px; font-family: var(--font-mono), monospace; letter-spacing: 0.04em; text-transform: uppercase; }
+:global(.bm) .mk { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--amber); color: var(--ink); font-style: normal; font-weight: 800; font-size: 12px; font-family: var(--font-body), sans-serif; margin-right: 6px; vertical-align: middle; flex: 0 0 22px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+:global(.bm) .sh2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
+:global(.bm) .box { border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+:global(.bm) .box small { display: block; font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5F7A; margin-bottom: 4px; }
+:global(.bm) .it { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }
+:global(.bm) .it th, :global(.bm) .it td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+:global(.bm) .it th:first-child, :global(.bm) .it td:first-child { text-align: left; white-space: normal; }
+:global(.bm) .it th { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: #4A5F7A; background: var(--ground); }
+:global(.bm) .fl { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+:global(.bm) .fl li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--muted); }
+:global(.bm) .fl li b { color: var(--ink); display: block; font-size: 16px; }
+:global(.bm) .dl { display: flex; gap: 10px; flex-wrap: wrap; }
+:global(.bm) .sig { display: flex; justify-content: space-between; gap: 16px; margin-top: 26px; align-items: flex-end; flex-wrap: wrap; }
+:global(.bm) .sig > div { text-align: center; border-top: 1px solid var(--ink); padding-top: 6px; min-width: 150px; flex: 1 1 150px; }
+:global(.bm) .links a { display: block; text-decoration: none; font-weight: 600; padding: 16px 0; border-top: 1px solid var(--line); }
+:global(.bm) .links a small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+:global(.bm) .links a:hover { color: var(--navy); }
+:global(.bm) .printHint { font-size: 13px; color: var(--muted); margin: 0; }
+
+@media screen and (max-width: 980px) {
+  :global(.bm) .tp { grid-template-columns: minmax(0, 1fr); }
+  :global(.bm) .sheet { padding: 18px; }
+  :global(.bm) .sh2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media screen and (max-width: 560px) {
+  :global(.bm) .sig > div { flex-basis: 100%; }
+}
+
+/* Printing: only the sample sheet is printed. */
+@media print {
+  .noPrint { display: none !important; }
+  :global(.bm) .tp { display: block; }
+  :global(.bm) { background: #fff; }
+  :global(.bm) .sheet { box-shadow: none; padding: 16px; border-width: 1px; }
+}

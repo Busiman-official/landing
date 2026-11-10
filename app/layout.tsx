@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Baloo_2, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   CONTACT_EMAIL,
@@ -11,16 +11,23 @@ import {
   absoluteUrl,
 } from "@/lib/site";
 import "./globals.css";
+import "./site.css";
 
-const baloo = Baloo_2({
-  variable: "--font-baloo",
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const body = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -82,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${baloo.variable} ${inter.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <JsonLd data={siteJsonLd} />

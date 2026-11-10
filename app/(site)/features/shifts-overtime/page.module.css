@@ -1,0 +1,18 @@
+:global(.bm) .hl{background:linear-gradient(transparent 62%,var(--amber) 62%,var(--amber) 92%,transparent 92%)}
+:global(.bm) .banner{position:relative;--bh:380px}
+:global(.bm) .walk{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+:global(.bm) .stepbar{display:flex;gap:8px;flex-wrap:wrap}
+:global(.bm) .what{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+:global(.bm) .what :global(.card){border-top:4px solid var(--amber)}
+:global(.bm) .rel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:global(.bm) .rel a{display:block;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:22px;text-decoration:none;color:inherit}
+:global(.bm) .rel a:hover{box-shadow:5px 5px 0 var(--ink)}
+:global(.bm) .rel b{display:block;font-family:var(--font-display),sans-serif;font-size:22px;margin-bottom:6px}
+:global(.bm) .rel p{color:var(--muted);font-size:15px}
+@media (max-width:980px){:global(.bm) .walk{grid-template-columns:minmax(0,1fr)}:global(.bm) .what{grid-template-columns:repeat(2,minmax(0,1fr))}:global(.bm) .rel{grid-template-columns:minmax(0,1fr)}:global(.bm) .banner{--bh:260px}}
+@media (max-width:560px){:global(.bm) .what{grid-template-columns:minmax(0,1fr)}}
+
+/* Tailwind preflight zeroes heading weight; the design relies on the browser default bold for h3 */
+:global(.bm) h3{font-weight:700}
+/* selected chip is ink on an ink section; outline it so the choice reads */
+:global(.bm) :global(.on-ink) :global(.chip.on){border-color:var(--amber)}

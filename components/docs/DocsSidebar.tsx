@@ -17,7 +17,9 @@ function Categories({ pathname }: { pathname: string }) {
               const active = pathname === href;
               return (
                 <li key={page.slug} className={active ? styles.active : undefined}>
-                  <Link href={href}>{page.title}</Link>
+                  <Link href={href} aria-current={active ? "page" : undefined}>
+                    {page.title}
+                  </Link>
                 </li>
               );
             })}
@@ -37,9 +39,12 @@ export function DocsSidebar() {
         <Categories pathname={pathname} />
       </nav>
 
-      <details className={styles.mobile}>
-        <summary>Browse docs</summary>
-        <Categories pathname={pathname} />
+      {/* Keyed by path so the menu closes itself after you pick a page. */}
+      <details className={styles.mobile} key={pathname}>
+        <summary>Browse all docs</summary>
+        <nav aria-label="Documentation menu" className={styles.mobileList}>
+          <Categories pathname={pathname} />
+        </nav>
       </details>
     </>
   );

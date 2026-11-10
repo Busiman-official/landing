@@ -1,331 +1,147 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { FeatureIcon } from "@/components/ui/Icons";
-import { Button } from "@/components/ui/Button";
-import { DispatchBoard } from "@/components/ui/DispatchBoard";
-import styles from "./fsm.module.css";
+import { Crumbs } from "@/components/kit/Crumbs";
+import { Faq, type FaqItem } from "@/components/kit/Faq";
+import { Photo } from "@/components/kit/Photo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageMetadata, softwareLd } from "@/lib/seo";
+import { r } from "@/lib/routes";
+import { JobFlow } from "./JobFlow";
+import s from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Free Field Service Management (FSM) Software",
-  description:
-    "Dispatch engineers, file service reports with photos and signatures, and track every machine's visit history. Built into Busiman, free.",
-  alternates: { canonical: "/features/field-service-management" },
-};
+const PATH = "/features/field-service-management";
+const TITLE = "Service management software for repair and field teams";
+const DESCRIPTION =
+  "Create a service report, assign a technician, track the parts, take the customer's signature and collect payment, all from the phone.";
 
-const proof: { value: string; label: string }[] = [
-  { value: "1 app", label: "From dispatch to signed-off report" },
-  { value: "₹0", label: "Cost, no per-engineer pricing" },
-  { value: "Photo + signature", label: "Captured on every visit" },
-  { value: "Real-time", label: "Job status back to the office" },
+export const metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: PATH });
+
+const faq: FaqItem[] = [
+  { q: "What is a service report?", a: "It is the record of one job. It holds the customer, the assignment, the parts used, the status history and an edit log." },
+  { q: "Can technicians ask for parts?", a: "Yes. They raise material and parts requests from the app, and a manager approves them." },
+  { q: "Can I take the customer's signature?", a: "Yes. The signature is captured on the phone as part of the job." },
+  { q: "Can I collect payment on the job?", a: "Yes. You can bill and collect payment from the same service job." },
+  { q: "Can I send work to an outside vendor?", a: "Yes. Outsourcing orders carry billing lines and payments, with reminders when they are overdue." },
 ];
 
-const capabilities: {
-  icon: "fsm" | "team" | "location" | "service" | "bell" | "attendance";
-  title: string;
-  description: string;
-  bullets: string[];
-}[] = [
-  {
-    icon: "fsm",
-    title: "Smart dispatch & assignment",
-    description:
-      "Turn a customer complaint into a job in seconds, and send it to the right engineer without a phone call.",
-    bullets: [
-      "Assign jobs by service center, territory or engineer availability",
-      "Reassign a job the moment an engineer is stuck or unavailable",
-      "Every job carries the customer's call history straight from Call Management",
-    ],
-  },
-  {
-    icon: "service",
-    title: "Mobile technician app",
-    description:
-      "Everything an engineer needs is on their phone, including when the network isn't.",
-    bullets: [
-      "Job details, customer contact and machine history on the go",
-      "File the service report on-site with photos and a customer signature",
-      "Jobs queue and sync automatically once the engineer is back online",
-    ],
-  },
-  {
-    icon: "location",
-    title: "Service centers & territories",
-    description:
-      "Run one workshop or twenty service centers from the same account.",
-    bullets: [
-      "Group engineers under a service center or territory",
-      "See open, in-progress and completed jobs per center",
-      "Move jobs between centers as workload shifts",
-    ],
-  },
-  {
-    icon: "team",
-    title: "Customer & machine history",
-    description:
-      "Nothing about a repeat complaint is a guess, because every past visit is on record.",
-    bullets: [
-      "Full visit history against each customer and each machine",
-      "Spot repeat faults before they become a bigger complaint",
-      "Past reports, photos and signatures searchable in one place",
-    ],
-  },
-  {
-    icon: "bell",
-    title: "Real-time visibility for the office",
-    description:
-      "Know where every job stands without calling the engineer to ask.",
-    bullets: [
-      "Job status updates the moment the engineer changes it",
-      "Alerts for jobs that haven't moved, so nothing sits forgotten",
-      "One screen for a manager to see every engineer's day",
-    ],
-  },
-];
-
-const builtFor = [
-  {
-    title: "Appliance & electronics service centers",
-    description:
-      "Repairs, warranty claims and walk-in complaints, tracked from call to closed job.",
-  },
-  {
-    title: "AMC & annual maintenance providers",
-    description:
-      "Scheduled visits across hundreds of customers, without a spreadsheet of due dates.",
-  },
-  {
-    title: "Installation & repair teams",
-    description:
-      "New installs and follow-up service handled by the same engineers, on the same board.",
-  },
-  {
-    title: "Dealers & distributors with after-sales service",
-    description:
-      "Sales, spares and service under one roof, connected instead of three separate registers.",
-  },
-];
-
-const connections = [
-  {
-    from: "Call Management",
-    to: "FSM",
-    text: "A customer complaint on a call becomes a service job in one step, with the call history attached.",
-  },
-  {
-    from: "FSM",
-    to: "Inventory",
-    text: "Materials used on a job are logged against stock, so spares don't quietly run out.",
-  },
-  {
-    from: "FSM",
-    to: "Notifications",
-    text: "Stuck jobs and pending visits push an alert instead of waiting to be noticed.",
-  },
-];
-
-const faqs = [
-  {
-    q: "What is Field Service Management (FSM)?",
-    a: "Field Service Management is the set of tools a business uses to run work that happens outside the office — assigning jobs to field engineers, tracking their visits, and recording what was done. In Busiman, it covers the full loop from a customer's complaint to a signed-off service report.",
-  },
-  {
-    q: "Is FSM part of the free app, or a separate cost?",
-    a: "It's part of the same free Busiman app as every other module. There's no separate plan or per-engineer charge for using it.",
-  },
-  {
-    q: "Do engineers need any special hardware?",
-    a: "No. The Busiman mobile app runs on a regular Android or iOS phone, which is what most field engineers already carry.",
-  },
-  {
-    q: "Can engineers file reports without network signal on-site?",
-    a: "Yes. Reports, photos and signatures are captured on the phone and sync automatically once the engineer is back in network range, so a weak signal at a customer site doesn't hold up the job.",
-  },
-  {
-    q: "How is FSM different from just filing a service report?",
-    a: "A service report is one part of it. FSM also covers dispatch and job assignment, service center and territory organisation, customer and machine history, and real-time status for the office — the whole flow around that report, not just the form.",
-  },
-  {
-    q: "Which businesses actually use this?",
-    a: "Mostly appliance and electronics service centers, AMC providers, installation and repair teams, and dealers who run after-sales service alongside sales — anywhere work happens at a customer's location, not at a desk.",
-  },
-];
-
-export default function FieldServiceManagementPage() {
+export default function ServiceManagementPage() {
   return (
     <>
-      <header className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div>
-            <p className={styles.eyebrow}>Field Service Management</p>
-            <h1 className={styles.h1}>
-              Get every field job done right, the first time.
+      <JsonLd data={softwareLd({ name: "Busiman Service Management", description: DESCRIPTION, path: PATH })} />
+      <Crumbs trail={[{ name: "Features", path: "/features" }, { name: "Service management", path: PATH }]} />
+
+      <div className="sec" style={{ paddingTop: 24, paddingBottom: 80 }}>
+        <div className="wrap split">
+          <div className="stack" style={{ gap: 24 }}>
+            <span className="eyebrow">Service reports · parts · signatures</span>
+            <h1 className={`d1 ${s.h1big}`}>
+              Service management for the job on site. <span className={`hl ${s.hl}`}>From request to paid.</span>
             </h1>
-            <p className={styles.lede}>
-              From the moment a customer calls in a complaint to the
-              signed-off service report, Busiman&apos;s FSM module keeps
-              dispatch, engineers and the office on the same page — at zero
-              cost.
+            <p className="lead">
+              Create a service report, assign a technician, track the parts, take the customer&apos;s signature and collect
+              payment, all from the phone.
             </p>
-            <div className={styles.ctas}>
-              <Button href="/#download" size="lg">
-                Download
-              </Button>
-              <Button href="/#contact" variant="ghost" size="lg">
-                Contact Us
-              </Button>
-            </div>
-            <div className={styles.trust}>
-              <span>Free forever</span>
-              <span>Works on desktop &amp; mobile</span>
-              <span>No per-engineer pricing</span>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <Link className="btn btn-amber" href={r("Signup")}>Start free</Link>
+              <a className="btn btn-line" href="#flow">Follow a service job</a>
             </div>
           </div>
-          <DispatchBoard />
+          <Photo src="/img/appliance-repair.jpg" alt="A technician repairing a household appliance" height={440} priority />
         </div>
-      </header>
+      </div>
 
-      <section className={styles.intro}>
-        <div className={styles.inner}>
-          <h2 className={styles.h2Small}>What is Field Service Management?</h2>
-          <p className={styles.introText}>
-            Field service management is how a business coordinates work that
-            happens away from the office — repairs, installations,
-            maintenance visits — instead of at a desk. It covers assigning
-            the job to the right person, getting them what they need to do
-            it, and having a record of what happened once it&apos;s done.
-          </p>
-          <p className={styles.introText}>
-            Most small businesses run this on phone calls and WhatsApp: a
-            complaint comes in, someone remembers who&apos;s free, an
-            engineer is sent, and the paperwork (if any) comes back days
-            later. Busiman&apos;s FSM module replaces that with one board the
-            office can see and one app the engineer carries — so a job never
-            depends on someone remembering to follow up.
-          </p>
+      <div className="sec on-dark">
+        <div className="wrap split">
+          <div className="stack" style={{ gap: 20 }}>
+            <span className="eyebrow lt">Why service work slips</span>
+            <h2 className="d2">Jobs, parts and payments get lost between the shop and the field.</h2>
+            <p className="lead">
+              Who got the job, which part went out, did the customer sign, was the money collected? Busiman keeps one record
+              per job with a status history, so the answers are in the app and not in someone&apos;s head.
+            </p>
+          </div>
+          <Photo src="/img/service-team-2.jpg" alt="A mechanic repairing an engine in a small workshop" height={340} style={{ borderColor: "var(--amber)" }} />
         </div>
-      </section>
+      </div>
 
-      <section className={styles.proofBand}>
-        <div className={styles.inner}>
-          <div className={styles.proofGrid}>
-            {proof.map((p) => (
-              <div key={p.label} className={styles.proofTile}>
-                <div className={styles.proofValue}>{p.value}</div>
-                <div className={styles.proofLabel}>{p.label}</div>
-              </div>
-            ))}
+      <div id="flow" className="sec">
+        <div className="wrap stack" style={{ gap: 32 }}>
+          <div className="stack" style={{ gap: 14, maxWidth: 760 }}>
+            <span className="eyebrow">Follow one job</span>
+            <h2 className="d2">Step through a service report.</h2>
+          </div>
+          <JobFlow />
+        </div>
+      </div>
+
+      <div className="sec on-ink">
+        <div className="wrap stack" style={{ gap: 44 }}>
+          <div className="stack" style={{ gap: 14, maxWidth: 760 }}>
+            <span className="eyebrow lt">How it works</span>
+            <h2 className="d2">Four steps from call to cash.</h2>
+          </div>
+          <div className={s.steps}>
+            <div className={s.st}><h3>Create the report</h3><p>Log the job against the customer and their machine.</p></div>
+            <div className={s.st}><h3>Assign a technician</h3><p>Assign it, or let technicians request it. Every status change is recorded.</p></div>
+            <div className={s.st}><h3>Do the work</h3><p>Request parts, get approvals, and use the parts from the technician kit.</p></div>
+            <div className={s.st}><h3>Sign and collect</h3><p>Capture the customer&apos;s signature, then bill and collect payment.</p></div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.capabilities}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>What&apos;s inside</p>
-          <h2 className={styles.h2}>Everything a field team needs, connected</h2>
-
-          <div className={styles.capList}>
-            {capabilities.map((cap, i) => (
-              <article
-                key={cap.title}
-                className={`${styles.capRow} ${
-                  i % 2 === 1 ? styles.capRowReverse : ""
-                }`}
-              >
-                <div className={styles.capIconCol}>
-                  <div className={styles.capIcon}>
-                    <FeatureIcon name={cap.icon} className={styles.capIconSvg} />
-                  </div>
-                </div>
-                <div className={styles.capBody}>
-                  <h3 className={styles.capTitle}>{cap.title}</h3>
-                  <p className={styles.capDesc}>{cap.description}</p>
-                  <ul className={styles.capBullets}>
-                    {cap.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+      <div className="sec">
+        <div className="wrap stack" style={{ gap: 40 }}>
+          <div className="stack" style={{ gap: 14, maxWidth: 760 }}>
+            <span className="eyebrow">What is in service</span>
+            <h2 className="d2">Built for repair and field teams.</h2>
+          </div>
+          <div className="g3">
+            <div className="card"><h3>Service reports</h3><p>Create, assign and track each job, with assignment requests, a status history and an edit log.</p></div>
+            <div className="card"><h3>Parts and materials</h3><p>Technicians request material and parts, and managers approve them.</p></div>
+            <div className="card"><h3>Technician kit</h3><p>Each technician carries a kit, so you know what is with whom.</p></div>
+            <div className="card"><h3>Customer signature</h3><p>Capture the customer&apos;s signature on the phone when the work is done.</p></div>
+            <div className="card"><h3>Bill and collect</h3><p>Raise the bill and collect payment on the same job.</p></div>
+            <div className="card"><h3>Customer machines</h3><p>Keep each customer&apos;s machines on record, with a machine bill of materials and components.</p></div>
+            <div className="card"><h3>Service centers</h3><p>Organise work across your service centers.</p></div>
+            <div className="card"><h3>Outsourcing</h3><p>Send work to outside vendors with billing lines and payments, and get overdue reminders.</p></div>
+            <div className="card dark"><h3>Role-based access</h3><p>Admin, HR, Manager and Employee roles decide who sees and approves what.</p></div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.builtFor}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>Built for</p>
-          <h2 className={styles.h2}>Any business whose work leaves the office</h2>
-          <div className={styles.builtForGrid}>
-            {builtFor.map((b) => (
-              <div key={b.title} className={styles.builtForCard}>
-                <h3 className={styles.builtForTitle}>{b.title}</h3>
-                <p className={styles.builtForDesc}>{b.description}</p>
-              </div>
-            ))}
+      <div className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap stack" style={{ gap: 32 }}>
+          <div className="stack" style={{ gap: 14, maxWidth: 760 }}>
+            <span className="eyebrow">Works with</span>
+            <h2 className="d2">Related modules.</h2>
+          </div>
+          <div className="g3">
+            <Link className={`card ${s.rel}`} href={r("Payroll")}><h3>Payroll</h3><p>Field cash floats and advances for your technicians.</p><span className={s.go}>See payroll</span></Link>
+            <Link className={`card ${s.rel}`} href={r("FeatureAttendance")}><h3>Attendance</h3><p>Know who is on duty, from phone, Wi-Fi or a gate device.</p><span className={s.go}>See attendance</span></Link>
+            <Link className={`card ${s.rel}`} href={r("FeatureGST")}><h3>GST billing</h3><p>Bills with GST handled by state.</p><span className={s.go}>See GST billing</span></Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.connected}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>One app, not six</p>
-          <h2 className={styles.h2}>FSM doesn&apos;t work alone</h2>
-          <p className={styles.categoryDesc}>
-            Because it&apos;s part of Busiman and not a separate tool, FSM
-            already talks to the modules around it.
-          </p>
-          <div className={styles.connGrid}>
-            {connections.map((c) => (
-              <div key={c.text} className={styles.connCard}>
-                <div className={styles.connPath}>
-                  <span>{c.from}</span>
-                  <span className={styles.connArrow} aria-hidden="true">
-                    &rarr;
-                  </span>
-                  <span>{c.to}</span>
-                </div>
-                <p className={styles.connText}>{c.text}</p>
-              </div>
-            ))}
+      <div className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap g2" style={{ alignItems: "start" }}>
+          <div className="stack" style={{ gap: 14 }}>
+            <span className="eyebrow">Service questions</span>
+            <h2 className="d2">Straight answers.</h2>
+          </div>
+          <Faq items={faq} />
+        </div>
+      </div>
+
+      <div className="on-ink" style={{ padding: "80px 0" }}>
+        <div className="wrap stack" style={{ gap: 20, alignItems: "flex-start" }}>
+          <h2 className="d2">Put every service job on one record.</h2>
+          <p className="lead">Start free, create your first service report and assign it to a technician.</p>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <Link className="btn btn-amber" href={r("Signup")}>Start free</Link>
+            <Link className="btn btn-line" href={r("Contact")}>Talk to us</Link>
           </div>
         </div>
-      </section>
-
-      <section className={styles.faq}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>Questions</p>
-          <h2 className={styles.h2}>Frequently asked</h2>
-          <div className={styles.faqList}>
-            {faqs.map((f) => (
-              <div key={f.q} className={styles.faqItem}>
-                <h3 className={styles.faqQ}>{f.q}</h3>
-                <p className={styles.faqA}>{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.cta}>
-        <div className={styles.inner}>
-          <h2 className={styles.ctaH2}>Put field service on one board</h2>
-          <p className={styles.ctaSub}>
-            FSM is already inside the free Busiman app. Download it and set
-            up your first service center in a few minutes.
-          </p>
-          <div className={styles.ctaButtons}>
-            <Button href="/#download" size="lg">
-              Download
-            </Button>
-            <Button href="/#contact" variant="ghost" size="lg">
-              Contact Us
-            </Button>
-          </div>
-          <Link href="/features" className={styles.backLink}>
-            &larr; Back to all features
-          </Link>
-        </div>
-      </section>
+      </div>
     </>
   );
 }

@@ -1,0 +1,10 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .res{display:flex;flex-direction:column;gap:12px;list-style:none;padding:0;margin:0}
+:global(.bm) .res a{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+:global(.bm) .res a:hover,:global(.bm) .res a:focus-visible{border-color:var(--navy)}
+:global(.bm) .res .t{font-family:var(--font-display),sans-serif;font-weight:700;font-size:21px;color:var(--ink)}
+:global(.bm) .res .d{font-size:15px;color:var(--muted)}
+:global(.bm) .count{font-family:var(--font-mono),monospace;font-size:14px;color:var(--muted)}
+:global(.bm) .empty{border:2px dashed var(--line);border-radius:16px;padding:32px;background:#fff}
+:global(.bm) .empty ul{padding-left:20px;margin:10px 0 0;display:flex;flex-direction:column;gap:6px}
+@media (max-width:560px){:global(.bm) .res a{padding:16px}:global(.bm) .empty{padding:22px}}

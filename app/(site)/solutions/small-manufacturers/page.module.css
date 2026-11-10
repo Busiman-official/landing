@@ -1,0 +1,15 @@
+:global(.bm) .flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff}
+:global(.bm) .flow>div{padding:24px 20px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:8px}
+:global(.bm) .flow>div:last-child{border-right:0}
+:global(.bm) .flow :global(.n){font-family:var(--font-mono),monospace;font-weight:600;font-size:13px;color:var(--amberd)}
+:global(.bm) .flow b{font-family:var(--font-display),sans-serif;font-size:21px;line-height:1.1}
+:global(.bm) .flow p{font-size:14px;color:var(--muted)}
+:global(.bm) .deep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+:global(.bm) .deep :global(.card){border-radius:18px}
+:global(.bm) .links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:global(.bm) .links a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;color:inherit;display:block}
+:global(.bm) .links a:hover{border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+:global(.bm) .links b{font-family:var(--font-display),sans-serif;font-size:20px;display:block;margin-bottom:4px}
+:global(.bm) .links p{font-size:15px;color:var(--muted)}
+@media (max-width:980px){:global(.bm) .flow{grid-template-columns:minmax(0,1fr)}:global(.bm) .flow>div{border-right:0;border-bottom:2px solid var(--ink)}:global(.bm) .flow>div:last-child{border-bottom:0}:global(.bm) .deep,:global(.bm) .links{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){}

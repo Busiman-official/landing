@@ -1,53 +1,32 @@
-import type { Metadata } from "next";
+import { Crumbs } from "@/components/kit/Crumbs";
+import { LegalShell, formatLegalDate } from "@/components/company/LegalShell";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getLegalPage } from "@/lib/legal";
-import { ReadingProgress } from "@/components/shared/ReadingProgress";
-import { TableOfContents } from "@/components/shared/TableOfContents";
-import styles from "./legal.module.css";
+import { pageMetadata, webPageLd } from "@/lib/seo";
 
+const PATH = "/privacy-policy";
 const policy = getLegalPage("privacy-policy");
-// Only top-level sections in the contents list; the sub-sections make it
-// too long to scan on a policy page.
+// Only top-level sections in the contents list; the sub-sections make it too long to scan.
 const sections = policy.headings.filter((h) => h.level === 2);
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: policy.summary,
-  alternates: { canonical: "/privacy-policy" },
-};
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+export const metadata = pageMetadata({ title: "Privacy Policy", description: policy.summary, path: PATH });
 
 export default function PrivacyPolicy() {
   return (
-    <article>
-      <ReadingProgress targetId="policy-body" />
-
-      <div className={styles.header}>
-        <div className={styles.headerInner}>
-          <p className={styles.eyebrow}>Legal</p>
-          <h1 className={styles.title}>{policy.title}</h1>
-          <p className={styles.summary}>{policy.summary}</p>
-          <p className={styles.meta}>
-            Last updated{" "}
-            <time dateTime={policy.updated}>{formatDate(policy.updated)}</time>
-          </p>
-        </div>
-      </div>
-
-      <div className={styles.layout}>
-        <TableOfContents headings={sections} />
-        <div
-          id="policy-body"
-          className={styles.prose}
-          dangerouslySetInnerHTML={{ __html: policy.html }}
-        />
-      </div>
-    </article>
+    <>
+      <Crumbs trail={[{ name: "Privacy", path: PATH }]} />
+      <JsonLd data={webPageLd({ name: policy.title, description: policy.summary, path: PATH })} />
+      <LegalShell
+        eyebrow="Legal"
+        title={policy.title}
+        meta={
+          <span>
+            Last updated: <time dateTime={policy.updated}>{formatLegalDate(policy.updated)}</time>
+          </span>
+        }
+        toc={sections}
+        html={policy.html}
+      />
+    </>
   );
 }

@@ -1,0 +1,9 @@
+:global(.bm) .gsearch{max-width:560px}
+:global(.bm) .letter{font-family:var(--font-display),sans-serif;font-weight:800;font-size:40px;color:var(--navy);border-bottom:2px solid var(--ink);padding-bottom:6px;margin:0}
+:global(.bm) .term{display:grid;grid-template-columns:240px minmax(0,1fr);gap:8px 32px;padding:18px 0;border-bottom:1px dashed #B7C4D6;align-items:start}
+:global(.bm) .term h3{font-size:22px;margin:0;font-weight:700}
+:global(.bm) .term h3 a{color:var(--ink);text-decoration:none}
+:global(.bm) .term h3 a:hover{text-decoration:underline}
+:global(.bm) .term p{margin:0;color:var(--muted);font-size:16px}
+:global(.bm) .term .more{display:inline-block;margin-top:8px;font-weight:600;color:var(--navy);font-size:15px;text-decoration:underline}
+@media (max-width:980px){:global(.bm) .term{grid-template-columns:minmax(0,1fr)}}

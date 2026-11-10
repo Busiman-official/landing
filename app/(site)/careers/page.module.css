@@ -1,0 +1,2 @@
+:global(.bm) .ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:980px){:global(.bm) .ct{grid-template-columns:minmax(0,1fr)}}

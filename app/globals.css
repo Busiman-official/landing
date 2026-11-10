@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 /*
-  Busiman brand tokens, pulled from the logo (navy + amber).
-  Design commits to a light, ledger/register-paper motif — no dark theme.
+  Busiman brand tokens, taken from the logo (navy + amber). The marketing site's own system lives
+  in app/site.css under the `.bm` root; these :root values keep the retained pages (docs, reports,
+  legal) on the same brand colours.
 */
 :root {
-  --navy: #123b6d;
-  --navy-deep: #0c2c54;
-  --amber: #ffab00;
-  --amber-soft: #fff4dc;
+  --navy: #003a6d;
+  --navy-deep: #00213f;
+  --amber: #feac00;
+  --amber-soft: #fff6de;
   --amber-line: #ffd980;
-  --ink: #44546e;
-  --ink-soft: #7285a0;
-  --ground: #fbfaf7;
-  --tint: #f2f5fa;
+  --ink: #00213f;
+  --ink-soft: #3f5470;
+  --ground: #f1f4f8;
+  --tint: #e3ecf6;
   --card: #ffffff;
-  --line: #e3e9f2;
+  --line: #d3dce8;
+
+  /* Old font variable names, aliased so the retained CSS modules keep working. */
+  --font-baloo: var(--font-display);
+  --font-inter: var(--font-body);
 }
 
 @theme inline {
@@ -30,9 +35,6 @@
   --color-tint: var(--tint);
   --color-card: var(--card);
   --color-line: var(--line);
-
-  --font-display: var(--font-baloo);
-  --font-body: var(--font-inter);
 }
 
 html {
@@ -42,19 +44,7 @@ html {
 body {
   background: var(--ground);
   color: var(--ink);
-  font-family: var(--font-body);
-  /* Safety net, not the fix for any specific overflow — the actual causes (unwrapped nav links,
-     unconstrained decorative chips) are fixed at the source in their own components. This just
-     stops the page itself from ever growing a horizontal scrollbar if something is missed. */
-  overflow-x: hidden;
-}
-
-h1,
-h2,
-h3 {
-  color: var(--navy);
-  text-wrap: balance;
-  line-height: 1.15;
+  font-family: var(--font-body), system-ui, sans-serif;
   margin: 0;
 }
 

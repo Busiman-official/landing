@@ -1,0 +1,15 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .plan{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px}
+:global(.bm) .plan.feat{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:8px 8px 0 var(--amber)}
+:global(.bm) .plan.feat p,:global(.bm) .plan.feat li{color:#C9D8EA}
+:global(.bm) .plan ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+:global(.bm) .plan li{display:flex;gap:10px;font-size:15px;color:var(--muted)}
+:global(.bm) .plan li::before{content:"✓";font-weight:700;color:var(--ok)}
+:global(.bm) .plan.feat li::before{color:var(--amber)}
+:global(.bm) .big{font-family:var(--font-display),sans-serif;font-size:60px;font-weight:800;line-height:1}
+:global(.bm) .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
+:global(.bm) .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;counter-increment:s}
+:global(.bm) .step::before{content:"0" counter(s);font-family:var(--font-mono),monospace;font-weight:600;color:var(--amber);font-size:13px;letter-spacing:.1em}
+:global(.bm) .step h3{font-size:22px;margin:10px 0 8px}
+:global(.bm) .step p{color:var(--muted);font-size:15px}
+@media (max-width:980px){:global(.bm) .steps{grid-template-columns:minmax(0,1fr)}:global(.bm) .big{font-size:46px}}

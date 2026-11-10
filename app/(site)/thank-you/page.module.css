@@ -1,0 +1,6 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .ty{max-width:680px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:22px;padding:44px;box-shadow:8px 8px 0 var(--amber);display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+:global(.bm) .next{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:n;width:100%}
+:global(.bm) .next li{display:flex;gap:14px;align-items:flex-start;font-size:17px;counter-increment:n}
+:global(.bm) .next li::before{content:counter(n);flex:0 0 32px;height:32px;border-radius:50%;background:var(--amber);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800}
+@media (max-width:560px){:global(.bm) .ty{padding:24px;box-shadow:5px 5px 0 var(--amber)}}

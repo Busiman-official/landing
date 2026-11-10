@@ -1,51 +1,31 @@
-import type { Metadata } from "next";
+import { Crumbs } from "@/components/kit/Crumbs";
+import { LegalShell, formatLegalDate } from "@/components/company/LegalShell";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getLegalPage } from "@/lib/legal";
-import { ReadingProgress } from "@/components/shared/ReadingProgress";
-import { TableOfContents } from "@/components/shared/TableOfContents";
-import styles from "../privacy-policy/legal.module.css";
+import { pageMetadata, webPageLd } from "@/lib/seo";
 
+const PATH = "/delete-account";
 const page = getLegalPage("delete-account");
 const sections = page.headings.filter((h) => h.level === 2);
 
-export const metadata: Metadata = {
-  title: "Delete Your Account",
-  description: page.summary,
-  alternates: { canonical: "/delete-account" },
-};
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+export const metadata = pageMetadata({ title: "Delete Your Account", description: page.summary, path: PATH });
 
 export default function DeleteAccount() {
   return (
-    <article>
-      <ReadingProgress targetId="policy-body" />
-
-      <div className={styles.header}>
-        <div className={styles.headerInner}>
-          <p className={styles.eyebrow}>Account</p>
-          <h1 className={styles.title}>{page.title}</h1>
-          <p className={styles.summary}>{page.summary}</p>
-          <p className={styles.meta}>
-            Last updated{" "}
-            <time dateTime={page.updated}>{formatDate(page.updated)}</time>
-          </p>
-        </div>
-      </div>
-
-      <div className={styles.layout}>
-        <TableOfContents headings={sections} />
-        <div
-          id="policy-body"
-          className={styles.prose}
-          dangerouslySetInnerHTML={{ __html: page.html }}
-        />
-      </div>
-    </article>
+    <>
+      <Crumbs trail={[{ name: "Delete account", path: PATH }]} />
+      <JsonLd data={webPageLd({ name: page.title, description: page.summary, path: PATH })} />
+      <LegalShell
+        eyebrow="Account"
+        title={page.title}
+        meta={
+          <span>
+            Last updated: <time dateTime={page.updated}>{formatLegalDate(page.updated)}</time>
+          </span>
+        }
+        toc={sections}
+        html={page.html}
+      />
+    </>
   );
 }

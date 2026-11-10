@@ -2,37 +2,38 @@
 .partial {
   display: inline-flex;
   align-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  padding: 4px 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 11px;
   border-radius: 999px;
-  border: 1px solid;
 }
 
 .live {
-  color: #1a7a4c;
-  background: #e8f7ee;
-  border-color: #bfe8d1;
+  color: var(--ok);
+  background: #d7f0e3;
 }
 
 .partial {
-  color: #8a5b00;
-  background: var(--amber-soft);
-  border-color: var(--amber-line);
+  color: var(--amberd);
+  background: #ffebc2;
 }
 
 .platform {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-family: var(--font-mono), monospace;
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
 }

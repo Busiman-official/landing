@@ -1,0 +1,9 @@
+:global(.bm) .hero-w{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:56px;align-items:center}
+:global(.bm) .hero-w :global(.photo){height:520px}
+:global(.bm) .lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:l}
+:global(.bm) .lanes a{counter-increment:l;display:block;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px;text-decoration:none;color:inherit}
+:global(.bm) .lanes a::before{content:"0" counter(l);font-family:var(--font-mono),monospace;font-weight:600;font-size:13px;color:var(--navy);display:block;margin-bottom:10px}
+:global(.bm) .lanes a:hover{box-shadow:5px 5px 0 var(--ink)}
+:global(.bm) .lanes b{display:block;font-family:var(--font-display),sans-serif;font-size:22px;margin-bottom:6px}
+:global(.bm) .lanes p{color:var(--muted);font-size:15px}
+@media (max-width:980px){:global(.bm) .hero-w{grid-template-columns:minmax(0,1fr)}:global(.bm) .hero-w :global(.photo){height:340px}:global(.bm) .lanes{grid-template-columns:minmax(0,1fr)}}

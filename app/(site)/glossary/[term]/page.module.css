@@ -1,0 +1,7 @@
+:global(.bm) .answer{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:24px 28px;box-shadow:6px 6px 0 var(--amber)}
+:global(.bm) .answer .eyebrow{display:block;margin-bottom:8px}
+:global(.bm) .answer p{font-size:20px;color:var(--ink);margin:0}
+:global(.bm) .rel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:global(.bm) .bom{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+:global(.bm) .bom li{display:flex;justify-content:space-between;gap:16px;padding:4px 0;border-bottom:1px dashed #B7C4D6}
+@media (max-width:980px){:global(.bm) .rel{grid-template-columns:minmax(0,1fr)}}

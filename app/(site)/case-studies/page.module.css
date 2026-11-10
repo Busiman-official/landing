@@ -1,0 +1,4 @@
+:global(.bm) .empty{background:#fff;border:2px dashed var(--ink);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:10px;max-width:760px}
+:global(.bm) .empty h2{font-size:26px;font-weight:700}
+:global(.bm) .cover{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+:global(.bm) .cover li{padding:4px 0;border-bottom:1px dashed #B7C4D6}

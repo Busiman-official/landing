@@ -1,0 +1,17 @@
+:global(.bm) .art{display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:start}
+:global(.bm) .toc{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:22px}
+:global(.bm) .toc ol{list-style:decimal;padding-left:24px;display:flex;flex-direction:column;gap:8px;font-size:15px;margin:10px 0 0}
+:global(.bm) .toc a{text-decoration:none;color:var(--navy);font-weight:500}
+:global(.bm) .toc a:hover{text-decoration:underline}
+:global(.bm) .meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px;color:var(--muted)}
+:global(.bm) .rel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:global(.bm .prose){overflow-wrap:anywhere}
+:global(.bm .prose) img{max-width:100%;height:auto;border-radius:12px}
+:global(.bm .prose) blockquote{border-left:6px solid var(--amber);background:#fff;padding:14px 20px;border-radius:0 12px 12px 0;margin:0 0 18px}
+:global(.bm .prose) blockquote p{margin:0}
+:global(.bm .prose) pre{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+:global(.bm .prose .table-scroll){overflow-x:auto;margin-bottom:18px}
+:global(.bm .prose) table{border-collapse:collapse;width:100%;font-size:16px}
+:global(.bm .prose) th,:global(.bm .prose) td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+@media (max-width:980px){:global(.bm) .art{grid-template-columns:minmax(0,1fr);gap:32px}:global(.bm) .rel{grid-template-columns:minmax(0,1fr)}}
+

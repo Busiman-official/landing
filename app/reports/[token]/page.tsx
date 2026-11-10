@@ -106,7 +106,7 @@ export default async function ServiceReportSharePage({
   const removed: ServiceReportShareMaterialLine[] = report.materialsRemoved;
 
   return (
-    <div className={styles.page}>
+    <div className={`bm ${styles.page}`}>
       <div className={styles.sheet}>
         <header className={styles.header}>
           <div className={styles.letterhead}>
@@ -159,12 +159,13 @@ export default async function ServiceReportSharePage({
         {report.machines.length > 0 ? (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Machines Serviced</h2>
+            <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Item</th>
-                  <th>Serial</th>
-                  <th>Issue</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Serial</th>
+                  <th scope="col">Issue</th>
                 </tr>
               </thead>
               <tbody>
@@ -180,17 +181,19 @@ export default async function ServiceReportSharePage({
                 ))}
               </tbody>
             </table>
+            </div>
           </section>
         ) : null}
 
         {lines.length > 0 ? (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Parts Used</h2>
+            <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Part</th>
-                  <th className={styles.right}>Qty</th>
+                  <th scope="col">Part</th>
+                  <th scope="col" className={styles.right}>Qty</th>
                 </tr>
               </thead>
               <tbody>
@@ -202,17 +205,19 @@ export default async function ServiceReportSharePage({
                 ))}
               </tbody>
             </table>
+            </div>
           </section>
         ) : null}
 
         {removed.length > 0 ? (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Parts Removed</h2>
+            <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Part</th>
-                  <th className={styles.right}>Qty</th>
+                  <th scope="col">Part</th>
+                  <th scope="col" className={styles.right}>Qty</th>
                 </tr>
               </thead>
               <tbody>
@@ -224,6 +229,7 @@ export default async function ServiceReportSharePage({
                 ))}
               </tbody>
             </table>
+            </div>
           </section>
         ) : null}
 

@@ -1,0 +1,38 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+:global(.bm) .hl{background:linear-gradient(transparent 62%,var(--amber) 62%,var(--amber) 92%,transparent 92%)}
+:global(.bm) .track{height:6px;background:#C5D2E2;border-radius:3px;overflow:hidden}
+:global(.bm) .fill{height:100%;background:var(--navy);border-radius:3px;transition:width .35s ease}
+:global(.bm) .shops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+:global(.bm) .shop{position:relative;border-radius:18px;overflow:hidden;border:2px solid var(--ink);min-height:320px;background:var(--ink);text-decoration:none}
+:global(.bm) .shop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+:global(.bm) .shop span{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(0,33,63,.97));color:#fff;font-family:var(--font-display),sans-serif;font-weight:700;font-size:20px;line-height:1.15}
+:global(.bm) .chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+:global(.bm) .node{border:2px solid #24557F;border-radius:12px;padding:16px;color:#9FB6CE;background:rgba(255,255,255,.03);transition:all .3s ease;min-height:150px}
+:global(.bm) .node b{display:block;font-family:var(--font-display),sans-serif;font-size:18px;margin:8px 0 6px;letter-spacing:-0.01em}
+:global(.bm) .bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+:global(.bm) .s2{grid-column:span 2}
+:global(.bm) .s3{grid-column:span 3}
+:global(.bm) .s4{grid-column:span 4}
+:global(.bm) .bimg{height:170px;border-radius:12px;object-fit:cover;width:100%;border:2px solid var(--ink)}
+:global(.bm) .roles{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:center}
+:global(.bm) .phone{width:320px;max-width:100%;border:3px solid var(--ink);border-radius:36px;background:#fff;padding:22px 16px 26px;margin:0 auto;box-shadow:8px 8px 0 var(--amber)}
+:global(.bm) .pitem{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 12px;border-radius:12px;background:var(--ground);margin-bottom:8px;font-size:14px;font-weight:500}
+:global(.bm) .price{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:14px}
+@media (max-width:980px){
+:global(.bm) .hero,:global(.bm) .roles{grid-template-columns:minmax(0,1fr);gap:40px}
+:global(.bm) .shops{grid-template-columns:repeat(2,minmax(0,1fr))}
+:global(.bm) .chain{grid-template-columns:repeat(2,minmax(0,1fr))}
+:global(.bm) .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+:global(.bm) .s2,:global(.bm) .s3{grid-column:span 1}
+:global(.bm) .s4{grid-column:span 2}
+:global(.bm) .bento>.s2:nth-last-child(2){grid-column:span 2}
+}
+@media (max-width:560px){
+:global(.bm) .bento{grid-template-columns:minmax(0,1fr)}
+:global(.bm) .s4,:global(.bm) .bento>.s2:nth-last-child(2){grid-column:span 1}
+:global(.bm) .heroslip{margin:-36px 6px 0 !important}
+:global(.bm) .shops{grid-template-columns:minmax(0,1fr)}
+:global(.bm) .shop{min-height:240px}
+:global(.bm) .chain{grid-template-columns:minmax(0,1fr)}
+}

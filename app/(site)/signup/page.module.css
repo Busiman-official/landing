@@ -1,0 +1,7 @@
+:global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
+:global(.bm) .su{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+:global(.bm) .formc{background:#fff;border:2px solid var(--ink);border-radius:22px;padding:36px;box-shadow:8px 8px 0 var(--amber);display:flex;flex-direction:column;gap:18px}
+:global(.bm) .first{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:f}
+:global(.bm) .first li{display:flex;gap:14px;align-items:center;font-size:18px;font-weight:600;font-family:var(--font-display),sans-serif;counter-increment:f}
+:global(.bm) .first li::before{content:counter(f);flex:0 0 36px;height:36px;border-radius:50%;background:var(--amber);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800}
+@media (max-width:980px){:global(.bm) .su{grid-template-columns:minmax(0,1fr);gap:40px}:global(.bm) .formc{padding:22px;order:-1;max-width:560px;width:100%;margin:0 auto}}

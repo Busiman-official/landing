@@ -1,0 +1,74 @@
+/*
+ * Global print stylesheet for the free tools and templates.
+ * Imported once by PrintButton / PrintStyles (both "use client"); Next bundles it a single time.
+ * Rule: when printing, everything except `.printArea` (and the elements that contain it) is hidden.
+ * Orientation: lib/free/print.ts setPrintOrientation() writes the @page size and sets
+ * <html data-print="portrait|landscape">. Default is A4 portrait.
+ */
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Hide every element that is not the print area, not inside it and does not contain it. */
+  body *:not(.printArea):not(.printArea *):not(:has(.printArea)) {
+    display: none !important;
+  }
+
+  /* Containers of the print area lose their layout chrome so the sheet starts at the top-left. */
+  body *:has(.printArea) {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    max-width: none !important;
+    width: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    display: block !important;
+    transform: none !important;
+  }
+
+  .printArea {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .printArea table {
+    page-break-inside: auto;
+  }
+  .printArea tr,
+  .printArea .noBreak {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .printArea thead {
+    display: table-header-group;
+  }
+  .printArea .noPrint {
+    display: none !important;
+  }
+
+  /* Wide tables must not clip on paper. */
+  .printArea .scrollx {
+    overflow: visible !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}

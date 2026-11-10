@@ -1,17 +1,20 @@
 .desktop {
+  grid-column: 2;
+  grid-row: 1;
   position: sticky;
-  top: 96px;
+  top: 100px;
   align-self: start;
-  max-height: calc(100vh - 130px);
+  max-height: calc(100vh - 124px);
   overflow-y: auto;
 }
 
 .label {
-  font-size: 11.5px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--navy);
   margin: 0 0 12px;
 }
 
@@ -26,27 +29,30 @@
 
 .desktop li,
 .mobile li {
-  border-left: 2px solid var(--line);
+  border-left: 3px solid var(--line);
 }
 
 .desktop .sub,
 .mobile .sub {
-  padding-left: 14px;
+  padding-left: 12px;
 }
 
 .desktop a,
 .mobile a {
   display: block;
-  padding: 6px 0 6px 14px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink-soft);
-  transition: color 0.15s;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
 }
 
 .desktop a:hover,
 .mobile a:hover {
   color: var(--navy);
+  background: var(--tint);
 }
 
 .desktop .active {
@@ -63,27 +69,58 @@
 }
 
 .mobile summary {
+  list-style: none;
   cursor: pointer;
-  font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 16px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile summary::after {
+  content: "+";
+  font-size: 24px;
+  line-height: 1;
   color: var(--navy);
-  padding: 14px 0;
+}
+
+.mobile[open] summary::after {
+  content: "\2212";
+}
+
+.mobile summary:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 10px;
 }
 
 .mobile ul {
-  padding-bottom: 12px;
+  padding: 4px 16px 16px;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .desktop {
     display: none;
   }
 
   .mobile {
     display: block;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    margin: 0 0 24px;
+    order: -1;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    margin: 0 0 28px;
   }
 }

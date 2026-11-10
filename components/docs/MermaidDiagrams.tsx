@@ -2,27 +2,27 @@
 
 import { useEffect } from "react";
 
-// Brand tokens (see app/globals.css). Mermaid needs literal colours.
+// Brand tokens (see the .bm block in app/site.css). Mermaid needs literal colours.
 const THEME = {
-  background: "#fbfaf7",
+  background: "#ffffff",
   fontFamily: "Inter, system-ui, -apple-system, Segoe UI, sans-serif",
-  primaryColor: "#fff3d6",
-  primaryBorderColor: "#123b6d",
-  primaryTextColor: "#123b6d",
-  secondaryColor: "#eef3fa",
-  secondaryBorderColor: "#123b6d",
-  secondaryTextColor: "#123b6d",
-  tertiaryColor: "#fbfaf7",
-  tertiaryBorderColor: "#e3e9f2",
-  tertiaryTextColor: "#44546e",
-  lineColor: "#44546e",
-  textColor: "#44546e",
-  noteBkgColor: "#fff3d6",
-  noteBorderColor: "#ffab00",
-  noteTextColor: "#44546e",
-  edgeLabelBackground: "#fbfaf7",
-  clusterBkg: "#eef3fa",
-  clusterBorder: "#e3e9f2",
+  primaryColor: "#ffebc2",
+  primaryBorderColor: "#003a6d",
+  primaryTextColor: "#00213f",
+  secondaryColor: "#e3ecf6",
+  secondaryBorderColor: "#003a6d",
+  secondaryTextColor: "#00213f",
+  tertiaryColor: "#ffffff",
+  tertiaryBorderColor: "#d3dce8",
+  tertiaryTextColor: "#3f5470",
+  lineColor: "#00213f",
+  textColor: "#00213f",
+  noteBkgColor: "#ffebc2",
+  noteBorderColor: "#feac00",
+  noteTextColor: "#00213f",
+  edgeLabelBackground: "#ffffff",
+  clusterBkg: "#f1f4f8",
+  clusterBorder: "#d3dce8",
 };
 
 // Turns the server-rendered `<pre class="mermaid">` source blocks into SVG.

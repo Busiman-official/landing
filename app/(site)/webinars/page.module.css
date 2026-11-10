@@ -1,0 +1,5 @@
+:global(.bm) .empty{background:#fff;border:2px dashed var(--ink);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:10px;max-width:760px}
+:global(.bm) .empty h2{font-size:26px;font-weight:700}
+:global(.bm) .empty p{color:var(--muted);margin:0}
+@media (max-width:980px){:global(.bm) .mgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:560px){:global(.bm) .mgrid{grid-template-columns:minmax(0,1fr)!important}}
