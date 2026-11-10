@@ -4,7 +4,7 @@ import { Faq } from "@/components/kit/Faq";
 import { Photo } from "@/components/kit/Photo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, softwareLd } from "@/lib/seo";
-import { r } from "@/lib/routes";
+import { r, type RouteKey } from "@/lib/routes";
 import { HomeDay } from "./HomeDay";
 import { HomeRoles } from "./HomeRoles";
 import s from "./page.module.css";
@@ -17,11 +17,11 @@ export const metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, p
 
 const BUILT_FOR = ["Retail counters", "Wholesalers", "Service and repair teams", "Multi-branch businesses", "Field sales crews"];
 
-const SHOPS = [
-  { src: "/img/kirana-store-interior.jpg", alt: "Inside a busy Indian grocery store", label: "Retail and grocery" },
-  { src: "/img/hardware-shop.jpg", alt: "A shopkeeper arranging tools in a hardware store", label: "Hardware and building supplies" },
-  { src: "/img/appliance-repair.jpg", alt: "A technician repairing an air conditioner in a workshop", label: "Appliance and electronics service" },
-  { src: "/img/pharmacy-store.jpg", alt: "A pharmacist at the counter among medicine shelves", label: "Pharmacy and medical stores", pos: "center 15%" },
+const SHOPS: { src: string; alt: string; label: string; to: RouteKey; pos?: string }[] = [
+  { src: "/img/kirana-store-interior.jpg", alt: "Inside a busy Indian grocery store", label: "Retail and grocery", to: "Retail" },
+  { src: "/img/hardware-shop.jpg", alt: "A shopkeeper arranging tools in a hardware store", label: "Hardware and building supplies", to: "SolWholesale" },
+  { src: "/img/appliance-repair.jpg", alt: "A technician repairing an air conditioner in a workshop", label: "Appliance and electronics service", to: "Solution" },
+  { src: "/img/pharmacy-store.jpg", alt: "A pharmacist at the counter among medicine shelves", label: "Pharmacy and medical stores", pos: "center 15%", to: "SolSmallBusiness" },
 ];
 
 const CHAIN = [
@@ -96,7 +96,7 @@ export default function HomePage() {
           </div>
           <div className={s.shops}>
             {SHOPS.map((sh) => (
-              <Link key={sh.label} className={s.shop} href={r("Solution")}>
+              <Link key={sh.label} className={s.shop} href={r(sh.to)}>
                 <Image
                   src={sh.src}
                   alt={sh.alt}
