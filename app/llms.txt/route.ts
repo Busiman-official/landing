@@ -51,7 +51,7 @@ ${link("GST invoice format", ROUTES.Template, "template")}
 ${link("Documentation", ROUTES.Docs, "how to use Busiman")}
 ${link("Guides", ROUTES.Guides, "attendance, GST billing, payroll, inventory")}
 ${link("Blog", ROUTES.BlogHub, "articles")}
-${link("Compare Busiman", ROUTES.CompareHub, "factual comparisons with other tools")}
+${link("Compare your setup", ROUTES.CompareHub, "what Busiman changes for paper, billing apps, separate tools and accounting software")}
 
 ## Company
 ${link("About", ROUTES.About, "who builds Busiman")}

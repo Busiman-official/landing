@@ -53,15 +53,11 @@ export const ROUTES = {
 
   // Compare and alternatives
   CompareHub: "/compare",
-  Compare: "/compare/busiman-vs-vyapar",
-  CmpMyBillBook: "/compare/busiman-vs-mybillbook",
-  CmpZoho: "/compare/busiman-vs-zoho-books",
-  CmpTally: "/compare/busiman-vs-tally",
-  CmpKeka: "/compare/busiman-vs-keka",
-  CmpGreytHR: "/compare/busiman-vs-greythr",
-  CmpOdoo: "/compare/busiman-vs-odoo",
-  AltVyapar: "/alternatives/vyapar-alternative",
-  AltTally: "/alternatives/tally-alternative",
+  CmpPaper: "/compare/paper-registers-and-spreadsheets",
+  CmpSeparate: "/compare/separate-apps-for-each-job",
+  CmpBilling: "/compare/billing-only-apps",
+  CmpAccounts: "/compare/accounting-software",
+  CmpHr: "/compare/hr-and-payroll-software",
 
   // Resources
   BlogHub: "/blog",

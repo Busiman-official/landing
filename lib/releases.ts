@@ -120,7 +120,7 @@ export async function getLatestMobileRelease(): Promise<MobileRelease> {
                 byFullName(fullName: $fullName) {
                   builds(
                     offset: 0
-                    limit: 1
+                    limit: 10
                     status: FINISHED
                     platform: ANDROID
                     filter: { distribution: STORE }
@@ -146,7 +146,11 @@ export async function getLatestMobileRelease(): Promise<MobileRelease> {
     if (!buildRes.ok) return { version: otaVersion, android: MOBILE_FALLBACK_URL };
 
     const json = await buildRes.json();
-    const build = json?.data?.app?.byFullName?.builds?.[0];
+    // Store builds include app bundles (.aab) meant for Play uploads, which a
+    // phone cannot install. Only hand out the newest installable .apk.
+    const builds: { appVersion?: string | null; artifacts?: { buildUrl?: string } }[] =
+      json?.data?.app?.byFullName?.builds ?? [];
+    const build = builds.find((b) => /\.apk(\?|$)/i.test(b.artifacts?.buildUrl ?? ""));
     const buildUrl: string | undefined = build?.artifacts?.buildUrl;
     const buildVersion: string | null = build?.appVersion ?? null;
 

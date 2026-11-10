@@ -50,7 +50,7 @@ const GROUPS: { title: string; links: [RouteKey, string][] }[] = [
       ["Guides", "Guides"],
       ["BlogHub", "Blog"],
       ["Help", "Help centre"],
-      ["CompareHub", "Compare Busiman"],
+      ["CompareHub", "Compare your setup"],
       ["About", "About"],
       ["Contact", "Contact"],
     ],

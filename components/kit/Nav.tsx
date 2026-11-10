@@ -41,7 +41,7 @@ const RESOURCES: NavLink[] = [
   { key: "BlogHub", label: "Blog" },
   { key: "GlossaryHub", label: "Glossary" },
   { key: "Help", label: "Help centre" },
-  { key: "CompareHub", label: "Compare Busiman" },
+  { key: "CompareHub", label: "Compare your setup" },
   { key: "Contact", label: "Contact" },
 ];
 

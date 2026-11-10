@@ -40,10 +40,10 @@ const COLS: { title: string; links: [RouteKey, string][] }[] = [
   {
     title: "Compare",
     links: [
-      ["Compare", "Busiman vs Vyapar"],
-      ["CmpMyBillBook", "Busiman vs myBillBook"],
-      ["AltVyapar", "Vyapar alternative"],
-      ["AltTally", "Tally alternative"],
+      ["CmpPaper", "Paper and spreadsheets"],
+      ["CmpSeparate", "One app or many"],
+      ["CmpBilling", "Billing-only apps"],
+      ["CmpAccounts", "Accounting software"],
       ["CompareHub", "All comparisons"],
     ],
   },

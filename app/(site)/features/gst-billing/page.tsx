@@ -124,7 +124,7 @@ export default function GstBillingPage() {
           <div className="g3">
             <Link className="card" href={r("Inventory")} style={cardLink}><span className="eyebrow">Next</span><h3>Inventory</h3><p>Every sale reduces the right batch, in the right location.</p></Link>
             <Link className="card" href={r("FeatureAttendance")} style={cardLink}><span className="eyebrow">Next</span><h3>Attendance</h3><p>Know who is on the counter before the first bill.</p></Link>
-            <Link className="card" href={r("Compare")} style={cardLink}><span className="eyebrow">Compare</span><h3>Busiman vs Vyapar</h3><p>See how the two differ, with sources.</p></Link>
+            <Link className="card" href={r("CmpBilling")} style={cardLink}><span className="eyebrow">Compare</span><h3>Busiman or a billing-only app</h3><p>See what Busiman adds around billing.</p></Link>
           </div>
         </div>
       </div>
