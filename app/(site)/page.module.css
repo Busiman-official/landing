@@ -1,5 +1,15 @@
 :global(.bm) h1,:global(.bm) h2,:global(.bm) h3,:global(.bm) h4{font-weight:700}
-:global(.bm) .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+:global(.bm) .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:start}
+:global(.bm) .gBadge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;background:#fff;border:2px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);color:var(--ink);text-decoration:none;font-size:14px;line-height:1.2;max-width:100%;flex-wrap:wrap}
+:global(.bm) a.gBadge{transition:transform .15s ease,box-shadow .15s ease}
+:global(.bm) a.gBadge:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+:global(.bm) a.gBadge:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+:global(.bm) .gMark{width:22px;height:22px;flex:none}
+:global(.bm) .gStars{color:var(--amber);font-size:16px;letter-spacing:2px;text-shadow:0 0 0 var(--ink);-webkit-text-stroke:.6px var(--ink)}
+:global(.bm) .gText{font-family:var(--font-mono),monospace;font-size:13px;color:var(--muted)}
+:global(.bm) .gText strong{color:var(--ink);font-weight:700}
+:global(.bm) .gCount{color:var(--ink)}
+:global(.bm) .gArrow{font-weight:700}
 :global(.bm) .hl{background:linear-gradient(transparent 62%,var(--amber) 62%,var(--amber) 92%,transparent 92%)}
 :global(.bm) .track{height:6px;background:#C5D2E2;border-radius:3px;overflow:hidden}
 :global(.bm) .fill{height:100%;background:var(--navy);border-radius:3px;transition:width .35s ease}

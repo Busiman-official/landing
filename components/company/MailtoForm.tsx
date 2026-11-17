@@ -12,7 +12,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
  */
 export type MailtoField = {
   label: string;
-  type?: "text" | "tel" | "email" | "url" | "select" | "textarea";
+  type?: "text" | "tel" | "email" | "url" | "datetime-local" | "select" | "textarea";
   autoComplete?: string;
   inputMode?: "tel" | "url";
   placeholder?: string;
@@ -37,40 +37,81 @@ export function MailtoForm({
 }) {
   const uid = useId();
   const [values, setValues] = useState<Record<string, string>>({});
-  const [ready, setReady] = useState(false);
+  const [done, setDone] = useState<"sent" | "mailto" | null>(null);
+  const [sending, setSending] = useState(false);
+  const [hp, setHp] = useState("");
 
   const fields = rows.flat();
   const valueOf = (f: MailtoField) =>
     values[f.label] ?? (f.type === "select" ? (f.options?.[0] ?? "") : "");
+  const readable = (f: MailtoField, v: string) =>
+    f.type === "datetime-local" && v
+      ? new Date(v).toLocaleString("en-IN", { dateStyle: "full", timeStyle: "short" })
+      : v;
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    const body = fields
-      .map((f) => ({ f, v: valueOf(f).trim() }))
-      .filter(({ v }) => v !== "")
-      .map(({ f, v }) => `${f.label}: ${v}`)
-      .join("\r\n");
-    const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setReady(true);
-    window.location.href = href;
+    if (sending) return;
+    const entries = fields
+      .map((f) => ({ label: f.label, value: readable(f, valueOf(f).trim()) }))
+      .filter((x) => x.value !== "");
+    setSending(true);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, fields: entries, hp }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setDone("sent");
+    } catch {
+      // The server could not take it: fall back to the visitor's own email app.
+      const body = entries.map((x) => `${x.label}: ${x.value}`).join("\r\n");
+      setDone("mailto");
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } finally {
+      setSending(false);
+    }
   }
 
-  if (ready) {
+  if (done === "sent") {
     return (
       <div className={s.formc}>
         <div className={s.ok} role="status">
-          <span className="stamp">READY TO SEND</span>
-          <h2 className="d3">Your email is ready.</h2>
+          <span className="stamp">SENT</span>
+          <h2 className="d3">We got your request.</h2>
           <p style={{ color: "var(--muted)", fontSize: 17 }}>
-            Your email app should have opened with your message filled in. Press send there and it
-            reaches us. If nothing opened, write to {CONTACT_EMAIL} or call 7500673358.
+            The Busiman team will reply by phone or email. If it is urgent, call 7500673358.
           </p>
           {doneLink ? (
             <Link className="btn btn-amber" href={doneLink.href}>
               {doneLink.label}
             </Link>
           ) : null}
-          <button className="btn btn-line" type="button" onClick={() => setReady(false)}>
+          <button className="btn btn-line" type="button" onClick={() => setDone(null)}>
+            Send another
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (done === "mailto") {
+    return (
+      <div className={s.formc}>
+        <div className={s.ok} role="status">
+          <span className="stamp">ALMOST DONE</span>
+          <h2 className="d3">Your email is ready.</h2>
+          <p style={{ color: "var(--muted)", fontSize: 17 }}>
+            We could not send it from here, so your email app should have opened with your message
+            filled in. Press send there and it reaches us. If nothing opened, write to {CONTACT_EMAIL} or call 7500673358.
+          </p>
+          {doneLink ? (
+            <Link className="btn btn-amber" href={doneLink.href}>
+              {doneLink.label}
+            </Link>
+          ) : null}
+          <button className="btn btn-line" type="button" onClick={() => setDone(null)}>
             Back to the form
           </button>
         </div>
@@ -119,8 +160,18 @@ export function MailtoForm({
           inner
         );
       })}
-      <button className="btn btn-amber" type="submit">
-        {submitLabel}
+      <input
+        type="text"
+        name="hp"
+        value={hp}
+        onChange={(e) => setHp(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
+      <button className="btn btn-amber" type="submit" disabled={sending}>
+        {sending ? "Sending…" : submitLabel}
       </button>
       <p style={{ fontSize: 13, color: "var(--muted)" }}>{helper}</p>
     </form>

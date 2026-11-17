@@ -51,16 +51,46 @@ const FAQ = [
 
 const displayFont = "var(--font-display),sans-serif";
 
+// Google rating badge. Fill in the real numbers and the Google review link from Business Profile.
+const GOOGLE_RATING = "5.0";
+const GOOGLE_REVIEW_COUNT: number | null = null; // e.g. 24
+const GOOGLE_REVIEW_URL = "https://g.page/r/Cb4RFsrebXvREBM/review";
+
+function GoogleRating() {
+  const body = (
+    <>
+      <svg className={s.gMark} viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5.1-4.5 6.7v5.5h7.2c4.2-3.9 6.6-9.6 6.6-16.2z" />
+        <path fill="#34A853" d="M24 46c6 0 11.1-2 14.8-5.4l-7.2-5.5c-2 1.3-4.6 2.1-7.6 2.1-5.8 0-10.8-3.9-12.5-9.2H4v5.7C7.7 41.1 15.3 46 24 46z" />
+        <path fill="#FBBC05" d="M11.500 28c-.5-1.300-.7-2.700-.7-4s.3-2.700.7-4v-5.700H4C2.400 17.400 1.500 20.600 1.500 24s.9 6.600 2.500 9.700l7.500-5.700z" />
+        <path fill="#EA4335" d="M24 10.800c3.300 0 6.200 1.100 8.500 3.300l6.400-6.400C35.100 4.100 30 2 24 2 15.300 2 7.700 6.900 4 14.300l7.500 5.700c1.700-5.300 6.700-9.200 12.500-9.200z" />
+      </svg>
+      <span className={s.gStars} aria-hidden="true">★★★★★</span>
+      <span className={s.gText}>
+        <strong>{GOOGLE_RATING}</strong> on Google
+        {GOOGLE_REVIEW_COUNT ? <span className={s.gCount}> · {GOOGLE_REVIEW_COUNT} reviews</span> : null}
+      </span>
+      {GOOGLE_REVIEW_URL ? <span className={s.gArrow} aria-hidden="true">→</span> : null}
+    </>
+  );
+  const label = `Rated ${GOOGLE_RATING} out of 5 on Google${GOOGLE_REVIEW_COUNT ? `, ${GOOGLE_REVIEW_COUNT} reviews` : ""}`;
+  return GOOGLE_REVIEW_URL ? (
+    <a className={s.gBadge} href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" aria-label={label}>{body}</a>
+  ) : (
+    <span className={s.gBadge} role="img" aria-label={label}>{body}</span>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       <JsonLd data={softwareLd({ name: "Busiman", description: DESCRIPTION, path: "/" })} />
 
       {/* HERO */}
-      <div className="sec" style={{ paddingTop: 64, paddingBottom: 88 }}>
+      <div className="sec" style={{ paddingTop: 40, paddingBottom: 88 }}>
         <div className={`wrap ${s.hero}`}>
           <div className="stack" style={{ gap: 28 }}>
-            <span className="eyebrow">Business management for Indian shops, teams and workshops</span>
+            <div><GoogleRating /></div>
             <h1 className="d1">Bills, staff and calls. All in <span className={`hl ${s.hl}`}>one app.</span></h1>
             <p className="lead">Busiman replaces the paper that runs your floor: the invoice, the punch card, the call log, the job sheet and the payslip. One record, free to start.</p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>

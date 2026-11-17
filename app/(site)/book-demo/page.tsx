@@ -51,6 +51,10 @@ const ROWS: MailtoField[][] = [
       ],
     },
   ],
+  [
+    { label: "Business website (optional)", type: "url", inputMode: "url", autoComplete: "url", placeholder: "https://" },
+    { label: "Preferred date and time for the demo", type: "datetime-local" },
+  ],
   [{ label: "A note for us (optional)", type: "textarea" }],
 ];
 
@@ -88,10 +92,9 @@ export default function BookDemoPage() {
       <JsonLd data={webPageLd({ name: "Book a Busiman demo", description: DESCRIPTION, path: PATH })} />
 
       <div className="sec" style={{ paddingTop: 24 }}>
-        <div className="wrap stack" style={{ gap: 40 }}>
-          <div className="stack" style={{ gap: 18, maxWidth: 780 }}>
-            <span className="eyebrow">Book a demo</span>
-            <h1 className="d1">See Busiman with your kind of business in mind.</h1>
+        <div className="wrap stack" style={{ gap: 28 }}>
+          <div className="stack" style={{ gap: 12, maxWidth: 820 }}>
+            <h1 className="d1" style={{ fontSize: "clamp(28px, 3.6vw, 44px)", lineHeight: 1.12 }}>See Busiman with your kind of business in mind.</h1>
             <p className="lead">
               Tell us what you run and what you would like to see. We reply by phone or email to set up a time.
             </p>
@@ -103,7 +106,7 @@ export default function BookDemoPage() {
                 heading="Request a demo"
                 rows={ROWS}
                 submitLabel="Request a demo"
-                helper="Sending opens your email app with this request ready. We use your details only to reply."
+                helper="Your request goes straight to the Busiman team. We use your details only to reply."
                 subject="Demo request from the Busiman website"
                 doneLink={{ href: r("ThankYou"), label: "See what happens next" }}
               />
