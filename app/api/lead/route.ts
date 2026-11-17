@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 /** Forwards website form submissions to the Busiman API, which emails them to the team inbox. */
 export async function POST(req: Request) {
-  const base = process.env.SERVICE_API_BASE_URL?.trim().replace(/\/+$/, "");
+  const base = (process.env.LEAD_API_BASE_URL || process.env.SERVICE_API_BASE_URL)?.trim().replace(/\/+$/, "");
   if (!base) {
     return NextResponse.json({ success: false }, { status: 503 });
   }
