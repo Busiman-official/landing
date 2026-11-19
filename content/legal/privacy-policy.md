@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-updated: "2026-10-07"
+updated: "2026-11-11"
 summary: How Busiman collects, uses, stores and protects information when you use the Busiman website, mobile app, desktop app and attendance gate.
 ---
 
@@ -130,12 +130,11 @@ We share information only with service providers that help us run Busiman, and o
 
 | Provider | What it does for us |
 | --- | --- |
-| Amazon Web Services (AWS) | Sending verification emails and storing quotation PDFs |
-| Fly.io | Hosting the Busiman servers |
-| MongoDB | Database for business and account information |
-| Cloudinary | Storing logos, product images and documents |
+| Amazon Web Services (AWS), Mumbai region | Hosting the Busiman servers and database, storing files (logos, product images, photos, attachments and quotation PDFs) and sending verification emails |
+| Cloudflare | Routing and protecting traffic to the Busiman servers |
+| Fast2SMS | Sending one-time codes by SMS (it sees your phone number and the code) |
+| Cashfree and Paytm | Processing online payments, where your business uses them. They handle card and UPI details; we never see or store them |
 | Google Firebase Cloud Messaging | Delivering notifications to your phone |
-| MessageCentral | Sending one-time codes by SMS |
 | Expo | Delivering mobile app updates |
 | GitHub | Delivering desktop app updates |
 | Apple and Google | Speech-to-text on your phone, when you dictate a note |
@@ -152,7 +151,7 @@ Your business can share a service report with a customer as a link. **Anyone who
 
 ## Where your information is stored
 
-Busiman's information is stored with the providers listed above. Some of it is stored in India (for example, emails and documents on AWS in Mumbai). Some providers may store or process information in other countries. When information leaves India, we rely on providers with strong security practices and only send what is needed.
+Busiman's servers, database and files are on AWS in Mumbai, India. Some other providers listed above (for example notifications, app updates and speech-to-text) may process information in other countries. When information leaves India, we rely on providers with strong security practices and only send what is needed.
 
 On your devices:
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Crumbs } from "@/components/kit/Crumbs";
 import { Faq } from "@/components/kit/Faq";
 import { Photo } from "@/components/kit/Photo";
+import { PlayBadge } from "@/components/kit/PlayBadge";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { r } from "@/lib/routes";
 import { pageMetadata, softwareLd } from "@/lib/seo";
@@ -65,8 +66,8 @@ export default function Page() {
               Bill a customer, punch in, scan stock, take a call and close a service job from the Android app your
               team already carries.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <Link className="btn btn-amber" href={r("Download")}>Get the Android app</Link>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+              <PlayBadge height={72} />
               <Link className="btn btn-line" href={r("Signup")}>Start free</Link>
             </div>
           </div>
@@ -145,8 +146,8 @@ export default function Page() {
         <div className="wrap stack" style={{ gap: 20, alignItems: "flex-start" }}>
           <h2 className="d2">Put Busiman on your team&rsquo;s phones.</h2>
           <p className="lead">Download the app, sign up free and add your first employee.</p>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <Link className="btn btn-amber" href={r("Download")}>Get the Android app</Link>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+            <PlayBadge height={72} />
             <Link className="btn btn-line" href={r("BookDemo")}>Book a demo</Link>
           </div>
         </div>

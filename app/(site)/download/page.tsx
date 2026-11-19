@@ -3,7 +3,8 @@ import { Faq } from "@/components/kit/Faq";
 import { Photo } from "@/components/kit/Photo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, softwareLd } from "@/lib/seo";
-import { getLatestDesktopRelease, getLatestMobileRelease } from "@/lib/releases";
+import { PlayBadge } from "@/components/kit/PlayBadge";
+import { getLatestDesktopRelease } from "@/lib/releases";
 import s from "./page.module.css";
 
 const TITLE = "Download the Android app and desktop app";
@@ -26,8 +27,7 @@ const ANDROID_LIST = ["GST billing", "Attendance and shifts", "Inventory", "Serv
 const DESKTOP_LIST = ["Attendance", "Calendar", "Employees", "Inventory", "Purchases", "Sales", "Shifts", "Wi-Fi"];
 
 export default async function DownloadPage() {
-  const [desktop, mobile] = await Promise.all([getLatestDesktopRelease(), getLatestMobileRelease()]);
-  const androidHref = mobile.android;
+  const desktop = await getLatestDesktopRelease();
   const desktopHref = desktop.windows ?? DESKTOP_RELEASES_PAGE;
   const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
@@ -42,8 +42,8 @@ export default async function DownloadPage() {
             <span className="eyebrow">The Android app is the main app</span>
             <h1 className="d1">Run the shop <span className={`hl ${s.hl}`}>from your phone.</span></h1>
             <p className="lead">The Android app is the main Busiman product. For desk work, there is a desktop app for the back office. Both keep themselves up to date from inside.</p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a className="btn btn-amber" href={androidHref} {...ext}>Get the Android app</a>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+              <PlayBadge height={72} />
               <a className="btn btn-line" href={desktopHref} {...ext}>Get the desktop app</a>
             </div>
             <p style={{ fontSize: 14, color: "var(--muted)" }}>Busiman is an Android app, with a desktop app for the back office.</p>
@@ -73,8 +73,8 @@ export default async function DownloadPage() {
             <h2 className="d3">Android app</h2>
             <p style={{ color: "var(--muted)", fontSize: 17 }}>For the owner and the whole team. Bill a customer, check stock, punch in, approve a shift and see alerts, all on the phone.</p>
             <ul className={s.ck}>{ANDROID_LIST.map((i) => <li key={i}>{i}</li>)}</ul>
-            <div><a className="btn btn-amber" href={androidHref} {...ext}>Get the Android app</a></div>
-            {mobile.version ? <p className="mono" style={{ fontSize: 12, color: "var(--muted)" }}>Version {mobile.version}</p> : null}
+            <div><PlayBadge height={64} /></div>
+            <p style={{ fontSize: 14, color: "var(--muted)" }}>Installs and updates through Google Play.</p>
           </div>
           <div className={s.dl}>
             <span className="tag" style={{ alignSelf: "flex-start" }}>For the back office</span>
@@ -112,8 +112,8 @@ export default async function DownloadPage() {
         <div className="wrap stack" style={{ gap: 20, alignItems: "flex-start" }}>
           <h2 className="d2">Get Busiman on your phone.</h2>
           <p className="lead">Start with the Android app and add the desktop app when you want a bigger screen.</p>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <a className="btn btn-amber" href={androidHref} {...ext}>Get the Android app</a>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+            <PlayBadge height={72} />
             <a className="btn btn-line" href={desktopHref} {...ext}>Get the desktop app</a>
           </div>
         </div>

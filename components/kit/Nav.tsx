@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { r, type RouteKey } from "@/lib/routes";
+import { PLAY_STORE_URL } from "@/lib/store";
 import { MobileMenu } from "./MobileMenu";
 
 type NavLink = { key: RouteKey; label: string; note?: string };
@@ -93,9 +94,15 @@ export function Nav() {
           <Link className="btn btn-amber hide-m" href={r("Signup")} style={{ minHeight: 44 }}>
             Start free
           </Link>
-          <Link className="btn btn-amber show-m" href={r("Download")} style={{ minHeight: 44 }}>
+          <a
+            className="btn btn-amber show-m"
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ minHeight: 44 }}
+          >
             Download
-          </Link>
+          </a>
           <MobileMenu />
         </div>
       </div>

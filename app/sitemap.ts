@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     Privacy: getLegalPage("privacy-policy").updated,
     Terms: getLegalPage("terms").updated,
     DeleteAccount: getLegalPage("delete-account").updated,
+    Refund: getLegalPage("refund-policy").updated,
+    CookiePolicy: getLegalPage("cookie-policy").updated,
   };
 
   const pages: MetadataRoute.Sitemap = (Object.keys(ROUTES) as RouteKey[])
