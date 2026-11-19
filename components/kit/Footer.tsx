@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { r, type RouteKey } from "@/lib/routes";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { PlayBadge } from "./PlayBadge";
 
 const COLS: { title: string; links: [RouteKey, string][] }[] = [
   {
@@ -111,6 +112,9 @@ export function Footer() {
                 <br />
                 www.busiman.org
               </p>
+              <div style={{ marginTop: 20 }}>
+                <PlayBadge className="play" height={52} />
+              </div>
             </div>
             {COLS.map((c) => (
               <div key={c.title}>

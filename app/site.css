@@ -206,3 +206,4 @@ body:has(details.mnav[open]) .fab{display:none}
 
 @media (max-width:1060px){.bm .foot a{padding:10px 0}.bm .logo{min-height:44px;min-width:44px}}
 @media (max-width:980px){.bm .split .d1{font-size:clamp(32px,5.6vw,56px)}.bm .split .d2{font-size:clamp(28px,4.4vw,44px)}}
+.bm .foot a.play{display:inline-block;padding:0;line-height:0}
